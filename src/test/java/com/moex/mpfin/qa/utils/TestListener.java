@@ -5,7 +5,7 @@ import org.testng.TestListenerAdapter;
 
 import static com.moex.mpfin.qa.reporting.ReportTools.takeScreenshot;
 
-public class TestResultListener extends TestListenerAdapter {
+public class TestListener extends TestListenerAdapter {
 
 	@Override
 	public void onTestFailure(ITestResult result) {

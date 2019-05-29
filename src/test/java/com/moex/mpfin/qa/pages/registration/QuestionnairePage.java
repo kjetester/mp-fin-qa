@@ -6,7 +6,7 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.moex.mpfin.qa.utils.CamundaApi.grabAndSetUserId;
+import static com.moex.mpfin.qa.utils.CamundaWorker.grabAndSetUserId;
 
 public class QuestionnairePage extends AbstractPage {
 

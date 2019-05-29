@@ -14,13 +14,11 @@ import com.moex.mpfin.qa.pages.registration.IdentificationPage;
 import com.moex.mpfin.qa.pages.registration.QuestionnairePage;
 import com.moex.mpfin.qa.pages.registration.RegistrationPage;
 import com.moex.mpfin.qa.utils.PageGenerator;
-import org.testng.TestListenerAdapter;
+import com.moex.mpfin.qa.utils.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import static com.moex.mpfin.qa.utils.CamundaApi.grabAndSetUserId;
-
-@Listeners(TestListenerAdapter.class)
+@Listeners({TestListener.class})
 public class SmokeTest extends BaseTest {
 
   private PageGenerator pageGen = new PageGenerator();

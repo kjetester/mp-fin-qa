@@ -6,7 +6,7 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.moex.mpfin.qa.utils.CamundaApi.grabAndSetContractId;
+import static com.moex.mpfin.qa.utils.CamundaWorker.grabAndSetContractId;
 
 public class DepositConditionsPage extends AbstractPage {
 

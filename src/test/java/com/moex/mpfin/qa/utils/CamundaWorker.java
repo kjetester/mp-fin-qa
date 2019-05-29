@@ -12,9 +12,9 @@ import java.util.List;
 import static com.moex.mpfin.qa.tests.BaseTest.*;
 import static com.moex.mpfin.qa.utils.DriverFactory.getDriver;
 
-public class CamundaApi {
+public class CamundaWorker {
 
-	private static String endpoint = NEW_DEV_IP + ":" + NEW_DEV_CAMUNDA + "/rest/task/";
+	private static String endpoint = NEW_DEV_IP + NEW_DEV_CAMUNDA + "/rest/task/";
 
 	public static void grabAndSetUserId() {
 		List<LogEntry> entries = getDriver().manage().logs().get(LogType.PERFORMANCE).getAll();

@@ -18,9 +18,10 @@ import static com.moex.mpfin.qa.utils.DriverFactory.removeDriver;
 
 public class BaseTest {
 
+	private static final String NEW_DEV_DNS = "http://develop.mp-fin-ui-lk.t5.beta.moex.com";
 	public static final String NEW_DEV_IP = "http://10.50.12.20";
-	public static final String NEW_DEV_CAMUNDA = "31257";
-	private static final String NEW_DEV_UI = "32421";
+	public static final String NEW_DEV_CAMUNDA = ":31257";
+	private static final String NEW_DEV_UI = ":32421";
 
 	@BeforeGroups(groups = { "e2e" })
 	public void beforeGroups(final ITestContext testContext) {
@@ -28,8 +29,7 @@ public class BaseTest {
 				+ User.getEmailAddress() + "/delete");
 		getDriver().manage().window().setSize(new Dimension(1200,800));
 		getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-//		getDriver().get(NEW_DEV_IP + ":" + NEW_DEV_UI_PORT + "/add-product/"
-		getDriver().get(NEW_DEV_IP + ":" + NEW_DEV_UI + "/add-product/"
+		getDriver().get(NEW_DEV_DNS + "/add-product/"
 				+ "?productId=" + Product.getProductId()
 				+ "&optionId=" + Product.getOptionId()
 				+ "&durationType=" + Product.getDurationType()
