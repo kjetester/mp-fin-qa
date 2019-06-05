@@ -4,10 +4,12 @@ public class Product {
 
 	private static final String PRODUCT_ID = "54";
 	private static final String OPTION_ID = "6382";
+	private static final String PRODUCT_NAME = "Очень удобный тестовый депозит";
+	private static final String PROVIDER_NAME = "ПАО БАНК ЗЕНИТ";
 	private static final String DURATION_TYPE = "1";
 	private static final String DURATION_VALUE = "30";
 	private static final String AMOUNT_VALUE = "1000";
-	private static final String RATE_VALUE = "999";
+	private static String percentageValue;
 
 	public static String getProductId() {
 		return PRODUCT_ID;
@@ -15,6 +17,14 @@ public class Product {
 
 	public static String getOptionId() {
 		return OPTION_ID;
+	}
+
+	public static String getProductName() {
+		return PRODUCT_NAME;
+	}
+
+	public static String getProviderName() {
+		return PROVIDER_NAME;
 	}
 
 	public static String getDurationType() {
@@ -29,8 +39,12 @@ public class Product {
 		return AMOUNT_VALUE;
 	}
 
-	public static String getRateValue() {
-		return RATE_VALUE;
+	public static String getPercentage() {
+		return percentageValue;
+	}
+
+	public static void setPercentage(String percentage) {
+		percentageValue = percentage;
 	}
 }
 

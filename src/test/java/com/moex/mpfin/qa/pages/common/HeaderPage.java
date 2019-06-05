@@ -28,4 +28,8 @@ public class HeaderPage extends AbstractPage {
 	public void goToCart() {
 		scrollTo(cartLink).click();
 	}
+
+	public void goToDashboard() {
+		scrollTo(dashboardLink).click();
+	}
 }

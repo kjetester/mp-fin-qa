@@ -2,37 +2,81 @@ package com.moex.mpfin.qa.utils;
 
 import com.moex.mpfin.qa.businessobjects.Contract;
 import com.moex.mpfin.qa.businessobjects.User;
-import io.restassured.RestAssured;
+import de.sstoehr.harreader.model.HttpStatus;
 import org.apache.commons.lang3.StringUtils;
-import org.openqa.selenium.logging.LogEntry;
-import org.openqa.selenium.logging.LogType;
 
-import java.util.List;
-
-import static com.moex.mpfin.qa.tests.BaseTest.*;
 import static com.moex.mpfin.qa.utils.DriverFactory.getDriver;
+import static com.moex.mpfin.qa.utils.EnvironmentProperties.getEnvProps;
+import static io.restassured.RestAssured.given;
 
+/**
+ * Interaction with Camunda BPM.
+ */
 public class CamundaWorker {
 
-	private static String endpoint = NEW_DEV_IP + NEW_DEV_CAMUNDA + "/rest/task/";
+	private static final String CAMUNDA_TOOL_URL = getEnvProps().getProperty("CAMUNDA_TOOL_URL");
+	private static final String SKIP_EBS = "skip-ebs";
+	private static final String SKIP_ACCOUNT_OPENING = "skip-account-opening";
+	private static final String SKIP_ACCOUNT_INIT_REPLENISHMENT = "skip-account-deposit";
+	private String BUSINESS_KEY = "";
 
-	public static void grabAndSetUserId() {
-		List<LogEntry> entries = getDriver().manage().logs().get(LogType.PERFORMANCE).getAll();
-		String registrationTaskId = StringUtils.substringBetween(entries.stream().filter(e ->
-			e.getMessage().toLowerCase().contains("registration-4?taskId"))
-				.findFirst().toString(),"registration-4?taskId=", "&businessKey=");
-		String userId = RestAssured.get(endpoint + registrationTaskId + "/variables?deserializeValues=false")
-				.jsonPath().get("moexUserId.value");
-		User.setUserId(userId);
+	/**
+	 * Skipping EBS process.
+	 */
+	public void skipEbsProcessAndSetUserId() {
+		User.setUserId(
+		given()
+				.queryParam("businessKey", BUSINESS_KEY)
+				.queryParam("moexUserId", User.getUserId())
+				.contentType("application/json")
+		.when()
+				.get(CAMUNDA_TOOL_URL + SKIP_EBS)
+		.then()
+				.assertThat()
+				.statusCode(HttpStatus.OK.getCode())
+				.extract()
+				.path("moexUserId"));
 	}
 
-	public static void grabAndSetContractId() {
-		List<LogEntry> entries = getDriver().manage().logs().get(LogType.PERFORMANCE).getAll();
-		String depositOpeningTaskId = StringUtils.substringBetween(entries.stream().filter(e ->
-				e.getMessage().toLowerCase().contains("conditions?taskId"))
-				.findFirst().toString(),"conditions?taskId=", "&businessKey=");
-		String contractId = RestAssured.get(endpoint + depositOpeningTaskId + "/variables?deserializeValues=false")
-				.jsonPath().get("contractId.value");
-		Contract.setContractId(contractId);
+	/**
+	 * Skipping account opening process (status from 3 to 6).
+	 */
+	public void skipAccountOpeningAndSetContractId() {
+		Contract.setContractId(
+				given()
+						.queryParam("businessKey", BUSINESS_KEY)
+						.queryParam("moexUserId", User.getUserId())
+						.contentType("application/json")
+						.when()
+						.get(CAMUNDA_TOOL_URL + SKIP_ACCOUNT_OPENING)
+						.then()
+						.assertThat()
+						.statusCode(HttpStatus.OK.getCode())
+						.extract()
+						.path("contractId"));
+	}
+
+	/**
+	 * Skipping account initial replenishment process (status from 6 to 7).
+	 */
+	public void skipAccountDeposit() {
+		given()
+				.queryParam("businessKey", BUSINESS_KEY)
+				.queryParam("moexUserId", User.getUserId())
+				.contentType("application/json")
+				.when()
+				.get(CAMUNDA_TOOL_URL + SKIP_ACCOUNT_INIT_REPLENISHMENT)
+				.then()
+				.assertThat()
+				.statusCode(HttpStatus.OK.getCode());
+	}
+
+	/**
+	 * Setting current business key.
+	 * @return CamundaWorker
+	 */
+	public CamundaWorker setBusinessKey() {
+		BUSINESS_KEY = StringUtils.substringAfter(getDriver().getCurrentUrl(), "&businessKey=");
+		return this;
 	}
 }

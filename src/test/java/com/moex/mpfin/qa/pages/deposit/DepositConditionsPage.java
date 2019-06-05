@@ -1,4 +1,4 @@
-package com.moex.mpfin.qa.pages.depositopening;
+package com.moex.mpfin.qa.pages.deposit;
 
 import com.moex.mpfin.qa.businessobjects.Product;
 import com.moex.mpfin.qa.pages.AbstractPage;
@@ -6,18 +6,20 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.moex.mpfin.qa.utils.CamundaWorker.grabAndSetContractId;
-
 public class DepositConditionsPage extends AbstractPage {
 
 	//TODO: Define unique text
-	private static final String PAGE_UNIQUE_TEXT = "";
+	private static final String PAGE_UNIQUE_TEXT
+			= "Открытие вклада \"" + Product.getProductName() + "\" | Банк \"" + Product.getProviderName() + "\"";
 
 	@FindBy(name = "amount")
 	private WebElement amountInput;
 
 	@FindBy(name = "duration")
 	private WebElement durationInput;
+
+	@FindBy(xpath = "//*[contains(text(), 'Ставка')]/../div[2]")
+	private WebElement percentage;
 
 	@FindBy(xpath = "//*[@name='consentContract']/..")
 	private WebElement agreementCheckbox;
@@ -29,7 +31,6 @@ public class DepositConditionsPage extends AbstractPage {
 	public DepositConditionsPage checkIfPageOpens() {
 		waitForElementIsVisible(submitButton);
 		super.checkIfPageOpens(PAGE_UNIQUE_TEXT);
-		grabAndSetContractId();
 		return this;
 	}
 
@@ -40,6 +41,11 @@ public class DepositConditionsPage extends AbstractPage {
 
 	public DepositConditionsPage setDuration(int duration) {
 		clickViaJavaScriptExecutor(durationInput).sendKeys(String.valueOf(duration));
+		return this;
+	}
+
+	public DepositConditionsPage grabPercentage() {
+		Product.setPercentage(percentage.getText().replaceAll("%", ""));
 		return this;
 	}
 

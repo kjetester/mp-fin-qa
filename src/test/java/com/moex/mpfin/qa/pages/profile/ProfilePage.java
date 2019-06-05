@@ -11,17 +11,18 @@ import org.openqa.selenium.support.FindBy;
 public class ProfilePage extends AbstractPage {
 
 	private static final String PAGE_UNIQUE_TEXT = "Профиль";
+	private static final String CONTACTS_BLOCK = "//div[@id = 'app']/div[1]/div/div[3]";
 
 	@FindBy(css = "a[href*='#personData']")
 	private WebElement personalDataTab;
 
-	@FindBy(xpath = "//div[@id = 'app']/div[1]/div/div[1]")
+	@FindBy(xpath = "//div[@id = 'app']/div[1]/div/div[2]")
 	private WebElement fioField;
 
-	@FindBy(xpath = "//div[@id = 'app']/div[1]/div/div[2]/div[1]/div/div[2]/div")
+	@FindBy(xpath = CONTACTS_BLOCK + "/div[1]/div/div[2]/div")
 	private WebElement phoneNumberField;
 
-	@FindBy(xpath = "//div[@id = 'app']/div[1]/div/div[2]/div[2]/div/div[2]/div")
+	@FindBy(xpath = CONTACTS_BLOCK + "/div[2]/div/div[2]/div")
 	private WebElement emailAddressField;
 
 	@FindBy(name = "documentType")

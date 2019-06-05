@@ -1,0 +1,3 @@
+BASE_URL=http://develop.mp-fin-ui-lk.t5.beta.moex.com
+CAMUNDA_TOOL_URL=http://develop.mp-fin-manual-state-change.t5.beta.moex.com/api/
+UI=http://10.50.12.20:32421

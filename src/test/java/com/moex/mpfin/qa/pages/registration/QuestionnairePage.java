@@ -6,7 +6,6 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.moex.mpfin.qa.utils.CamundaWorker.grabAndSetUserId;
 
 public class QuestionnairePage extends AbstractPage {
 
@@ -147,7 +146,6 @@ public class QuestionnairePage extends AbstractPage {
 		question3No.click();
 		question4Yes.click();
 		question5Yes.click();
-		grabAndSetUserId();
 		waitForElementToBeClickable(scrollTo(submitButton)).click();
 	}
 }

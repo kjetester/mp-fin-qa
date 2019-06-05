@@ -2,8 +2,7 @@ package com.moex.mpfin.qa.businessobjects;
 
 public class User {
 
-	private static String MOEX_USER_ID = null;
-
+	private static String userId = "";
 	private static final String LAST_NAME = "Колодзей";
 	private static final String FIRST_NAME = "Юлиан";
 	private static final String PATRONYMIC_NAME = "Евгеньевич";
@@ -136,10 +135,10 @@ public class User {
 	}
 
 	public static void setUserId(String userId) {
-		MOEX_USER_ID = userId;
+		User.userId = userId;
 	}
 
 	public static String getUserId() {
-		return MOEX_USER_ID;
+		return userId;
 	}
 }

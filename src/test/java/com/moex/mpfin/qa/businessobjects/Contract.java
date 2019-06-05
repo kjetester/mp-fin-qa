@@ -8,13 +8,13 @@ public class Contract {
 		Contract.contractId = contractId;
 	}
 
-	public static String getContractId() {
+	public String getContractId() {
 		return contractId;
 	}
 
 	public enum Status {
 		NEW("Новый"),
-		COORDINATION_WITH_BANK("На согласовании с банком"),
+		WAITING_FOR_BANK_APPROVAL("На согласовании с банком"),
 		WAITING_FOR_FUNDS("Ожидание поступления средств"),
 		WAITING_FOR_FUNDS_IN_BANK("Ожидание поступления средств в банк"),
 		ACTIVE("Действует"),
@@ -31,6 +31,21 @@ public class Contract {
 
 		private final String name;
 		Status(String s) {
+			name = s;
+		}
+
+		@Override
+		public String toString() {
+			return this.name;
+		}
+	}
+
+	public enum Action {
+		MAKE_APPLICATION("ОФОРМИТЬ ЗАЯВКУ"),
+		START_INITIAL_REPLENISHMENT("ВНЕСТИ СРЕДСТВА");
+
+		private final String name;
+		Action(String s) {
 			name = s;
 		}
 
