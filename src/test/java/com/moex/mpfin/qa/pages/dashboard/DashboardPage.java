@@ -39,7 +39,8 @@ public class DashboardPage extends AbstractPage {
 		//TODO: http://jira.moex.com/browse/MP-2480
 		// Assertions.assertThat(activeDeposits.get(0).findElement(By.xpath("./td[5]/div")).getText().replaceAll(" %", ""))
 //				.as("Checking percentage").isEqualTo(Product.getPercentage());
-		Assertions.assertThat(activeDeposits.get(0).findElement(By.xpath(".//td[6]/div")).getText())
+		Assertions.assertThat(activeDeposits.get(0).findElement(By.xpath(".//td[6]/div")).getText()
+				.replaceAll("[^\\d.]", ""))
 				.as("Checking amount").isEqualTo(Product.getAmountValue());
 	}
 }

@@ -52,6 +52,7 @@ public class CamundaWorker {
 						.then()
 						.assertThat()
 						.statusCode(HttpStatus.OK.getCode())
+						.assertThat()
 						.extract()
 						.path("contractId"));
 	}
