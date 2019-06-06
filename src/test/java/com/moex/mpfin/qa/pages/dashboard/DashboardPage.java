@@ -2,6 +2,7 @@ package com.moex.mpfin.qa.pages.dashboard;
 
 import com.moex.mpfin.qa.businessobjects.Product;
 import com.moex.mpfin.qa.pages.AbstractPage;
+import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -39,8 +40,8 @@ public class DashboardPage extends AbstractPage {
 		//TODO: http://jira.moex.com/browse/MP-2480
 		// Assertions.assertThat(activeDeposits.get(0).findElement(By.xpath("./td[5]/div")).getText().replaceAll(" %", ""))
 //				.as("Checking percentage").isEqualTo(Product.getPercentage());
-		Assertions.assertThat(activeDeposits.get(0).findElement(By.xpath(".//td[6]/div")).getText()
-				.replaceAll("[^\\d.]", ""))
+		Assertions.assertThat(StringUtils.substringBefore(activeDeposits.get(0).findElement(By.xpath(".//td[6]/div"))
+				.getText(), ",").replaceAll(" ", ""))
 				.as("Checking amount").isEqualTo(Product.getAmountValue());
 	}
 }
