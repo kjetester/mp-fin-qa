@@ -1,13 +1,17 @@
 package com.moex.mpfin.qa.utils;
 
-import com.moex.mpfin.qa.businessobjects.Contract;
-import com.moex.mpfin.qa.businessobjects.User;
-import de.sstoehr.harreader.model.HttpStatus;
-import org.apache.commons.lang3.StringUtils;
-
 import static com.moex.mpfin.qa.utils.DriverFactory.getDriver;
 import static com.moex.mpfin.qa.utils.EnvironmentProperties.getEnvProps;
 import static io.restassured.RestAssured.given;
+
+import com.moex.mpfin.qa.businessobjects.Contract;
+import com.moex.mpfin.qa.businessobjects.User;
+import com.moex.mpfin.qa.utils.dto.ModificationDto;
+import com.moex.mpfin.qa.utils.dto.ProcessInstanceModificationInstructionDto;
+import de.sstoehr.harreader.model.HttpStatus;
+import io.restassured.response.ExtractableResponse;
+import io.restassured.response.Response;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Interaction with Camunda BPM.
@@ -15,10 +19,74 @@ import static io.restassured.RestAssured.given;
 public class CamundaWorker {
 
 	private static final String CAMUNDA_TOOL_URL = getEnvProps().getProperty("CAMUNDA_TOOL_URL");
+	private static final String CAMUNDA_URL = getEnvProps().getProperty("CAMUNDA_URL");
 	private static final String SKIP_EBS = "skip-ebs";
 	private static final String SKIP_ACCOUNT_OPENING = "skip-account-opening";
 	private static final String SKIP_ACCOUNT_INIT_REPLENISHMENT = "skip-account-deposit";
 	private String BUSINESS_KEY = "";
+
+	/**
+	 * Jump to step
+	 * https://docs.camunda.org/manual/7.11/reference/rest/modification/post-modification-sync/
+	 */
+	public void jumpToPhysicalIdentification() {
+		final ExtractableResponse<Response> response =
+				given()
+					.queryParam("businessKey", BUSINESS_KEY)
+					.contentType("application/json")
+				.when()
+					.get(CAMUNDA_TOOL_URL + "get-task")
+				.then()
+					.assertThat()
+					.statusCode(HttpStatus.OK.getCode())
+					.extract();
+		String processDefinitionId = response.path("task.processDefinitionId");
+		String processInstanceId = response.path("task.processInstanceId");
+
+		given()
+			.contentType("application/json")
+			.body(
+				new ModificationDto()
+					.processDefinitionId(processDefinitionId)
+					.addProcessInstanceIdsItem(processInstanceId)
+					.skipCustomListeners(false)
+					.skipIoMappings(false)
+					.addInstructionsItem(
+						new ProcessInstanceModificationInstructionDto()
+							.type("startBeforeActivity")
+							.activityId("serviceTask_getIdpStatusEBS")
+					)
+					.addInstructionsItem(
+						new ProcessInstanceModificationInstructionDto()
+							.type("cancel")
+							.activityId("onboardingPersonalData")
+							.cancelCurrentActiveActivityInstances(true)
+					)
+					.addInstructionsItem(
+						new ProcessInstanceModificationInstructionDto()
+							.type("cancel")
+							.activityId("onboardingAccessDenied")
+							.cancelCurrentActiveActivityInstances(true)
+					)
+					.addInstructionsItem(
+						new ProcessInstanceModificationInstructionDto()
+							.type("cancel")
+							.activityId("onboardingBankSelection")
+							.cancelCurrentActiveActivityInstances(true)
+					)
+					.addInstructionsItem(
+						new ProcessInstanceModificationInstructionDto()
+							.type("cancel")
+							.activityId("onboardingPhoneVerificationNumber")
+							.cancelCurrentActiveActivityInstances(true)
+					)
+			)
+		.when()
+			.post(CAMUNDA_URL + "/rest/modification/execute")
+		.then()
+			.assertThat()
+			.statusCode(HttpStatus.NO_CONTENT.getCode());
+	}
 
 	/**
 	 * Skipping EBS process.

@@ -33,6 +33,13 @@ public class RegistrationPage extends AbstractPage {
   @FindBy(xpath = "//form/div[5]//button")
   private WebElement submitButton;
 
+//  <a aria-controls="#login" href="#login" role="tab" class="tabs-component-tab-a">Вход</a>
+  @FindBy(xpath = "//a[@href='#login']")
+  private WebElement loginTab;
+
+  @FindBy(xpath = "//section/div/div/p/button")
+  private WebElement submitButtonOnLoginTab;
+
   @Override
   public RegistrationPage checkIfPageOpens() {
     waitForElementIsVisible(submitButton);
@@ -54,5 +61,12 @@ public class RegistrationPage extends AbstractPage {
     scrollTo(agreementCheckbox).click();
     waitForElementToBeClickable(submitButton);
     scrollTo(submitButton).click();
+  }
+
+  public void switchingOnLoginFormAndSubmitForm() {
+    waitForElementToBeClickable(loginTab);
+    loginTab.click();
+    waitForElementToBeClickable(submitButtonOnLoginTab);
+    submitButtonOnLoginTab.click();
   }
 }
