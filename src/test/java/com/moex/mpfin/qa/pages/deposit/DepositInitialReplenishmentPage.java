@@ -25,7 +25,7 @@ public class DepositInitialReplenishmentPage extends AbstractPage {
 	@FindBy(xpath = "//ul[@class = 'multiselect__content']/li")
 	private List<WebElement> banksComboBoxList;
 
-	@FindBy(xpath = "//*[@name= 'amount']")
+	@FindBy(xpath = "//input[@name= 'amount']")
 	private WebElement amountInput;
 
 	@FindBy(xpath = "//*[contains(text(), 'Перевести')]/../../..")

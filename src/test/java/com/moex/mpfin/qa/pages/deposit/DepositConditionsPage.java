@@ -12,10 +12,10 @@ public class DepositConditionsPage extends AbstractPage {
 	private static final String PAGE_UNIQUE_TEXT
 			= "Открытие вклада \"" + Product.getProductName() + "\" | Банк \"" + Product.getProviderName() + "\"";
 
-	@FindBy(name = "amount")
+	@FindBy(xpath = "//input[@name='amount']")
 	private WebElement amountInput;
 
-	@FindBy(name = "duration")
+	@FindBy(xpath = "//input[@name='duration']")
 	private WebElement durationInput;
 
 	@FindBy(xpath = "//*[contains(text(), 'Ставка')]/../div[2]")

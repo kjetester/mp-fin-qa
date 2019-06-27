@@ -25,40 +25,40 @@ public class ProfilePage extends AbstractPage {
 	@FindBy(xpath = CONTACTS_BLOCK + "/div[2]/div/div[2]/div")
 	private WebElement emailAddressField;
 
-	@FindBy(name = "documentType")
+	@FindBy(xpath = "//input[@name='documentType']")
 	private WebElement documentTypeField;
 
-	@FindBy(name = "documentSerial")
+	@FindBy(xpath = "//input[@name='documentSerial']")
 	private WebElement documentSerialField;
 
-	@FindBy(name = "documentDate")
+	@FindBy(xpath = "//input[@name='documentDate']")
 	private WebElement documentDateField;
 
-	@FindBy(name = "citizenship")
+	@FindBy(xpath = "//input[@name='citizenship']")
 	private WebElement citizenshipField;
 
-	@FindBy(name = "issuedBy")
+	@FindBy(xpath = "//input[@name='issuedBy']")
 	private WebElement docIssuerField;
 
-	@FindBy(name = "departmentCode")
+	@FindBy(xpath = "//input[@name='departmentCode']")
 	private WebElement docIssuerDepartmentCodeField;
 
-	@FindBy(name = "placeOfBirth")
+	@FindBy(xpath = "//input[@name='placeOfBirth']")
 	private WebElement placeOfBirthField;
 
-	@FindBy(name = "snils")
+	@FindBy(xpath = "//input[@name='snils']")
 	private WebElement snilsField;
 
-	@FindBy(name = "inn")
+	@FindBy(xpath = "//input[@name='inn']")
 	private WebElement innField;
 
-	@FindBy(xpath = "//form/div[2]/div[2]//*[@name='fio']")
+	@FindBy(xpath = "//input[@name='Адрес регистрации']")
 	private WebElement registrationAddressField;
 
-	@FindBy(name = "dateOfRegistration")
+	@FindBy(xpath = "//input[@name='dateOfRegistration']")
 	private WebElement registrationDateField;
 
-	@FindBy(xpath = "//form/div[2]/div[4]//*[@name='fio']")
+	@FindBy(xpath = "//input[@name='Адрес проживания']")
 	private WebElement residentialAddressField;
 
 	@Override
@@ -71,11 +71,10 @@ public class ProfilePage extends AbstractPage {
 	public void verifyStaticFields() {
 		Assertions.assertThat(scrollTo(fioField).getText()).as("Checking FIO.")
 				.isEqualTo(User.getLastName() + " " + User.getFirstName() + " " + User.getPatronymicName());
-		Assertions.assertThat(scrollTo(phoneNumberField).getText().replaceAll("[^0-9]", "").replaceAll("^7", ""))
+		Assertions.assertThat(scrollTo(phoneNumberField).getText().replaceAll("[^0-9]", ""))
 				.as("Checking Phone Number.").isEqualTo(User.getPhoneNumber());
-		//TODO: http://jira.moex.com/browse/MPFIN-1835
-//		Assertions.assertThat(scrollTo(emailAddressField).getAttribute("value"))
-//				.as("Checking Email.").isEqualTo(User.getEmailAddress());
+		Assertions.assertThat(scrollTo(emailAddressField).getText())
+				.as("Checking Email.").isEqualTo(User.getEmailAddress());
 		Assertions.assertThat(scrollTo(documentTypeField).getAttribute("value"))
 				.as("Check DOC TYPE field").isEqualTo(User.getDocType());
 		Assertions.assertThat(scrollTo(documentSerialField).getAttribute("value"))

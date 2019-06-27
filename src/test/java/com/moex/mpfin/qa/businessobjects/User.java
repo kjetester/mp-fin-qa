@@ -11,7 +11,7 @@ public class User {
 	private static final String BIRTH_MONTH = "06";
 	private static final String BIRTH_YEAR = "1983";
 	private static final String EMAIL_ADDRESS = "yulian.kolodzey@moex.com";
-	private static final String PHONE_NUMBER = "7771112233";
+	private static final String PHONE_NUMBER = "77771112233";
 	private static final String ESIA_PHONE_NUMBER = "9998520302";
 	private static final String ESIA_PASSWORD = ".L4/s8=p<sP";
 	private static final String DOC_TYPE = "Паспорт гражданина Российской Федерации";
@@ -25,7 +25,7 @@ public class User {
 	private static final String SNILS_NUMBER = "936-858-695 91";
 	private static final String INN_NUMBER = "291152804593";
 	private static final String SECRET_WORD = "power123";
-	private static final String REGISTRATION_ADDRESS = "Москва, г. Москва, Липецкая, д. 26, кв. 77";
+	private static final String REGISTRATION_ADDRESS = "Москва, Липецкая, д. 26, кв. 77";
 	private static final String RESIDENTIAL_ADDRESS = "Московская, г. Люберцы, Дружбы, д. 456, кв. 312";
 
 	private static final String REGISTRATION_DATE = "20022002";

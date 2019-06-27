@@ -38,4 +38,6 @@ public class ReportTools {
     File destination = new File("target/screenshots/" + filename);
     FileUtils.copyFile(scr, destination);
   }
+
+
 }

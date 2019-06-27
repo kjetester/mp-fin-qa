@@ -8,7 +8,6 @@ import org.testng.ITestContext;
 import org.testng.annotations.AfterGroups;
 import org.testng.annotations.BeforeGroups;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import static com.moex.mpfin.qa.utils.DriverFactory.getDriver;
