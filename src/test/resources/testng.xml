@@ -1,0 +1,30 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite1" parallel="classes" thread-count="4">
+
+    <parameter name="window-width" value="1200"/>
+    <parameter name="window-height" value="800"/>
+    <parameter name="implicitly-wait" value="2"/>
+
+    <test name="e2e">
+        <groups>
+            <run>
+                <include name="e2e"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="SmokeTest" />
+        </classes>
+    </test>
+
+    <test name="registration" >
+        <groups>
+            <run>
+                <include name="registration"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="RegistrationTest" />
+        </classes>
+    </test>
+    
+</suite>

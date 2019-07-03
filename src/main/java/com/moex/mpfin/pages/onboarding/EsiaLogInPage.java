@@ -1,0 +1,32 @@
+package com.moex.mpfin.pages.onboarding;
+
+import com.moex.mpfin.businessobjects.user.FlexibleUser;
+import com.moex.mpfin.pages.AbstractPage;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class EsiaLogInPage extends AbstractPage {
+
+	private static final String PAGE_UNIQUE_TEXT = "идентификации и аутентификации";
+
+	@FindBy(id = "mobileOrEmail")
+	private WebElement loginInput;
+
+	@FindBy(id = "password")
+	private WebElement passwordInput;
+
+	@FindBy(id = "loginByPwdButton")
+	private WebElement submitButton;
+
+	@Override
+	public EsiaLogInPage checkIfPageOpens() {
+		super.checkIfPageOpens(PAGE_UNIQUE_TEXT);
+		return this;
+	}
+
+	public void fillAndSubmitForm(FlexibleUser user) {
+		waitForElementToBeClickable(loginInput).sendKeys(user.getEsiaPhoneNumber());
+		waitForElementToBeClickable(passwordInput).sendKeys(user.getEsiaPassword());
+		waitForElementToBeClickable(submitButton).click();
+	}
+}

@@ -1,0 +1,27 @@
+package com.moex.mpfin.pages.signin;
+
+import com.moex.mpfin.pages.AbstractPage;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class SignInPage extends AbstractPage {
+
+	private static final String PAGE_UNIQUE_TEXT = "Уже регистрировались у нас? Войдите с помощью";
+
+	@FindBy(xpath = "//section[@id = 'login']//button")
+	private WebElement submitButton;
+
+	@FindBy(css = "a[href *= 'registration']")
+	private WebElement registrationTab;
+
+	@Override
+	public SignInPage checkIfPageOpens() {
+		waitForElementIsVisible(submitButton);
+		super.checkIfPageOpens(PAGE_UNIQUE_TEXT);
+		return this;
+	}
+
+	public void goToRegistrationPage() {
+		waitForElementToBeClickable(registrationTab).click();
+	}
+}
