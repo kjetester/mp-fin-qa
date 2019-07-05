@@ -3,6 +3,9 @@ package com.moex.mpfin.pages.cart;
 import com.moex.mpfin.businessobjects.Contract;
 import com.moex.mpfin.pages.AbstractPage;
 import com.moex.mpfin.utils.WebDriverSingleton;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -15,6 +18,8 @@ public class CartPage extends AbstractPage {
 	private static final String BUTTON_ON_PRODUCT_BANNER_SELECTOR = " * button";
 	private static final String BUTTON_ON_PRODUCT_BANNER_NAME_SELECTOR = "//button//span";
 
+	private Logger logger = LogManager.getLogger(CartPage.class.getSimpleName());
+
 	@FindBy(xpath = "//h1[contains(., 'Корзина')]")
 	private WebElement title;
 
@@ -23,6 +28,7 @@ public class CartPage extends AbstractPage {
 
 	@Override
 	public CartPage checkIfPageOpens() {
+		logger.log(Level.INFO, "Checking if page opens.");
 		waitForElementIsVisible(title);
 		Assertions.assertThat(WebDriverSingleton.getDriver().getCurrentUrl()).as("Checking current URL.")
 				.contains("/cart");

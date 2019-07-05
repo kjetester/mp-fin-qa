@@ -1,29 +1,24 @@
 import com.moex.mpfin.businessobjects.Contract;
-import com.moex.mpfin.businessobjects.Product;
 import com.moex.mpfin.pages.cart.CartPage;
 import com.moex.mpfin.pages.common.HeaderPage;
 import com.moex.mpfin.pages.dashboard.DashboardPage;
 import com.moex.mpfin.pages.deposit.*;
-import com.moex.mpfin.pages.profile.ProfilePage;
 import com.moex.mpfin.pages.onboarding.*;
+import com.moex.mpfin.pages.profile.ProfilePage;
 import com.moex.mpfin.utils.CamundaWorker;
 import com.moex.mpfin.utils.PageGenerator;
 import com.moex.mpfin.utils.TestListener;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.testng.ITestContext;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import static com.moex.mpfin.utils.EnvironmentProperties.getEnvProps;
 import static com.moex.mpfin.utils.WebDriverSingleton.getDriver;
 
 @Listeners({TestListener.class})
 public class SmokeTest extends BaseTest {
 
-  private Logger logger = LogManager.getLogger();
+  private Logger logger = LogManager.getLogger(SmokeTest.class.getSimpleName());
   private PageGenerator pageGen = new PageGenerator();
   private HeaderPage header = pageGen.getInstance(HeaderPage.class);
   private CartPage cart = pageGen.getInstance(CartPage.class);
@@ -32,19 +27,6 @@ public class SmokeTest extends BaseTest {
   private DepositCardPage depositCard = pageGen.getInstance(DepositCardPage.class);
   private DashboardPage dashboard = pageGen.getInstance(DashboardPage.class);
   private WaitForResponseFromBankPage waitForResponseFromBank = pageGen.getInstance(WaitForResponseFromBankPage.class);
-  private static CamundaWorker camunda = new CamundaWorker();
-
-  @BeforeClass(groups = {"e2e"})
-  public void beforeClass(final ITestContext testContext) {
-    String targetUrl = getEnvProps().getProperty("BASE_URL") + "/add-product/"
-        + "?productId=" + Product.getProductId()
-        + "&optionId=" + Product.getOptionId()
-        + "&durationType=" + Product.getDurationType()
-        + "&durationValue=" + Product.getDurationValue()
-        + "&amount=" + Product.getAmountValue();
-    logger.log(Level.INFO, String.format("Navigating to ' %s '.", targetUrl));
-    getDriver().get(targetUrl);
-  }
 
   @Test(testName = "Registration Test", groups = { "e2e" })
   public void registrationSmokeTest() {

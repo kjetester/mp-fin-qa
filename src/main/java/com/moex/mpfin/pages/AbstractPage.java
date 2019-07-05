@@ -10,52 +10,51 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+
 import static com.moex.mpfin.utils.WebDriverSingleton.getDriver;
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
-import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOf;
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfAllElements;
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public abstract class AbstractPage {
 
   private Logger logger = LogManager.getLogger(AbstractPage.class.getSimpleName());
-
-  private static JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
-  protected static Actions actions = new Actions(getDriver());
 
   private static final Integer TIMEOUT = 30;
 
   public abstract Object checkIfPageOpens();
 
   protected void checkIfPageOpens(String pageUniqueText) {
-    logger.log(Level.INFO, "Checking if the page has been opened.");
     Assertions.assertThat(getDriver().getPageSource().contains(pageUniqueText))
         .as("Checking presence of the text: '" + pageUniqueText + "'.").isTrue();
   }
 
-  protected static List<WebElement> waitForAllElementsAreVisible(List<WebElement> elements) {
+  protected List<WebElement> waitForAllElementsAreVisible(List<WebElement> elements) {
+    logger.log(Level.DEBUG, "Waiting for the entire list of the WebElements to be visible.");
     new WebDriverWait(getDriver(), TIMEOUT).until(visibilityOfAllElements(elements));
     return elements;
   }
 
-  protected static WebElement waitForElementIsVisible(WebElement element) {
+  protected WebElement waitForElementIsVisible(WebElement element) {
+    logger.log(Level.DEBUG, "Waiting for the WebElement to be visible.");
     new WebDriverWait(getDriver(), TIMEOUT).until(visibilityOf(element));
     return element;
   }
 
-  protected static WebElement waitForElementNotVisible(WebElement element) {
+  protected WebElement waitForElementNotVisible(WebElement element) {
+    logger.log(Level.DEBUG, "Waiting for the WebElement to be invisible.");
     new WebDriverWait(getDriver(), TIMEOUT).until(invisibilityOf(element));
     return element;
   }
 
-  protected static WebElement waitForElementToBeClickable(WebElement element) {
+  protected WebElement waitForElementToBeClickable(WebElement element) {
+    logger.log(Level.DEBUG, "Waiting for the WebElement to be clickable.");
     new WebDriverWait(getDriver(), TIMEOUT).until(elementToBeClickable(element));
     return element;
   }
 
-  protected static WebElement scrollTo(WebElement element) {
+  protected WebElement scrollTo(WebElement element) {
     try {
-      jsExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
+      logger.log(Level.DEBUG, "Scrolling to the WebElement with the JavaScriptExecutor.");
+      ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
       Thread.sleep(500);
 //      takeScreenshotWithFrame(element);
     } catch (InterruptedException e) {
@@ -66,7 +65,8 @@ public abstract class AbstractPage {
 
   protected WebElement clickViaJavaScriptExecutor(WebElement element) {
     scrollTo(element);
-    jsExecutor.executeScript("arguments[0].click();", element);
+    logger.log(Level.DEBUG, "Clicking to WebElement with JavaScriptExecutor.");
+    ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", element);
     return element;
   }
 }

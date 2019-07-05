@@ -3,6 +3,9 @@ package com.moex.mpfin.pages.deposit;
 import com.moex.mpfin.pages.AbstractPage;
 import com.moex.mpfin.utils.WebDriverSingleton;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -11,6 +14,8 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class DepositInitialReplenishmentPage extends AbstractPage {
+
+	private Logger logger = LogManager.getLogger(DepositInitialReplenishmentPage.class.getSimpleName());
 
 	@FindBy(xpath = "//*[contains(text(), 'Сумма вклада')]")
 	private WebElement totalAmount;
@@ -32,6 +37,7 @@ public class DepositInitialReplenishmentPage extends AbstractPage {
 
 	@Override
 	public DepositInitialReplenishmentPage checkIfPageOpens() {
+		logger.log(Level.INFO, "Checking if page opens.");
 		waitForElementIsVisible(sourceComboBox);
 		super.checkIfPageOpens("Выберите источник для пополнения вклада");
 		return this;

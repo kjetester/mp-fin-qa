@@ -2,6 +2,9 @@ package com.moex.mpfin.pages.onboarding;
 
 import com.moex.mpfin.businessobjects.user.FlexibleUser;
 import com.moex.mpfin.pages.AbstractPage;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -10,6 +13,8 @@ import java.util.List;
 public class RegistrationPage extends AbstractPage {
 
   private static final String PAGE_UNIQUE_TEXT = "Добро пожаловать на Маркетплейс Московской Биржи!";
+
+  private Logger logger = LogManager.getLogger(RegistrationPage.class.getSimpleName());
 
   @FindBy(xpath = "//input[@name = 'fio']")
   private WebElement fullNameInput;
@@ -50,11 +55,16 @@ public class RegistrationPage extends AbstractPage {
 
   @Override
   public RegistrationPage checkIfPageOpens() {
+    logger.log(Level.INFO, "Checking if page opens.");
     waitForElementIsVisible(submitButton);
     super.checkIfPageOpens(PAGE_UNIQUE_TEXT);
     return this;
   }
 
+  /**
+   * Steps to fill up and submit the form.
+   * @param user user business object
+   */
   public void fillAndSubmitForm(FlexibleUser user) {
     fillFullNameField(user);
     if (user.isNoPatronymic()) {
@@ -69,58 +79,92 @@ public class RegistrationPage extends AbstractPage {
     clickSubmitButton();
   }
 
+  /**
+   * Filling The Full Name input.
+   * @param user user business object
+   */
+  private void fillFullNameField(FlexibleUser user) {
+    String fullName = user.isNoPatronymic()
+        ? user.getLastName() + " "+ user.getFirstName()
+        : user.getLastName() + " "+ user.getFirstName() + " " + user.getPatronymicName();
+    logger.log(Level.INFO, String.format("Filling The Full Name input with '%s'", fullName));
+    clickViaJavaScriptExecutor(fullNameInput).sendKeys(fullName);
+  }
+
+  /**
+   * Searching among suggested names correct one and setting it.
+   * @param user user business object
+   */
   private void chooseSuggestedName(FlexibleUser user) {
     waitForElementToBeClickable(suggestedNames.get(0));
+    logger.log(Level.INFO, String.format("Searching among suggested names correct one and setting it."));
     suggestedNames.stream().filter(w ->
       w.getText().equals(
-          user.isNoPatronymic() ? user.getLastName() + " " + user.getFirstName()
-          : (user.getLastName() + " " + user.getFirstName() + " " + user.getPatronymicName())
+          user.isNoPatronymic()
+              ? user.getLastName() + " " + user.getFirstName()
+              : user.getLastName() + " " + user.getFirstName() + " " + user.getPatronymicName()
       )).findFirst().get().click();
   }
 
-  private void clickSubmitButton() {
-    waitForElementToBeClickable(submitButton);
-    scrollTo(submitButton).click();
+  /**
+   * Filling The E-mail input.
+   * @param user user business object
+   */
+  private void fillEmailField(FlexibleUser user) {
+    logger.log(Level.INFO, String.format("Filling The E-mail input with '%s'", user.getEmailAddress()));
+    clickViaJavaScriptExecutor(emailInput).sendKeys(user.getEmailAddress());
   }
 
-  private void setAgreementCheckBox() {
-    scrollTo(agreementCheckbox).click();
+  /**
+   * Filling The Phone Number input.
+   * @param user user business object
+   */
+  private void fillPhoneNumberField(FlexibleUser user) {
+    logger.log(Level.INFO, String.format("Filling The Phone Number input with '%s'", user.getEmailAddress()));
+    clickViaJavaScriptExecutor(phoneInput).sendKeys(user.getPhoneNumber());
   }
 
+  /**
+   * Clicking The Send OTP Code button.
+   */
+  private void clickSendCodeButton() {
+    logger.log(Level.INFO, "Clicking The Send OTP Code button.");
+    waitForElementToBeClickable(sendOtpCodeButton);
+    scrollTo(sendOtpCodeButton).click();
+  }
+
+  /**
+   * Filling The OTP Code input.
+   */
   private void fillOtpCodeInput() {
+    logger.log(Level.INFO, "Filling The OTP Code input with '0000'.");
     waitForElementToBeClickable(otpCodeInput);
     clickViaJavaScriptExecutor(otpCodeInput).sendKeys("0000");
     waitForElementIsVisible(otpCodePassedSign);
   }
 
-  private void clickSendCodeButton() {
-    waitForElementToBeClickable(sendOtpCodeButton);
-    scrollTo(sendOtpCodeButton).click();
+  /**
+   * Setting The Agreement checkbox into true.
+   */
+  private void setAgreementCheckBox() {
+    logger.log(Level.INFO, "Setting The Agreement checkbox into true.");
+    scrollTo(agreementCheckbox).click();
   }
 
-  private void fillPhoneNumberField(FlexibleUser user) {
-    clickViaJavaScriptExecutor(phoneInput).sendKeys(user.getPhoneNumber());
+  /**
+   * Clicking The Submit button.
+   */
+  private void clickSubmitButton() {
+    logger.log(Level.INFO, "Clicking The Submit button.");
+    waitForElementToBeClickable(submitButton);
+    scrollTo(submitButton).click();
   }
 
-  private void fillEmailField(FlexibleUser user) {
-    fillEmailField(emailInput, user.getEmailAddress());
-  }
-
-  private void fillEmailField(WebElement emailInput, String emailAddress) {
-    clickViaJavaScriptExecutor(emailInput).sendKeys(emailAddress);
-  }
-
-  private void fillFullNameField(FlexibleUser user) {
-    clickViaJavaScriptExecutor(fullNameInput).sendKeys(
-        user.isNoPatronymic()
-            ? user.getLastName() + " "+ user.getFirstName() :
-            user.getLastName() + " "+ user.getFirstName() + " " + user.getPatronymicName());
-  }
-
-  public void switchingOnLoginFormAndSubmitForm() {
+  /**
+   * Navigating to The Login Page.
+   */
+  public void goToLoginPage() {
     waitForElementToBeClickable(loginTab);
     loginTab.click();
-    waitForElementToBeClickable(submitButtonOnLoginTab);
-    submitButtonOnLoginTab.click();
   }
 }

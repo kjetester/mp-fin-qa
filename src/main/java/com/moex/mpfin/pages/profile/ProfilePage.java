@@ -2,6 +2,9 @@ package com.moex.mpfin.pages.profile;
 
 import com.moex.mpfin.businessobjects.user.FlexibleUser;
 import com.moex.mpfin.pages.AbstractPage;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +13,8 @@ public class ProfilePage extends AbstractPage {
 
 	private static final String PAGE_UNIQUE_TEXT = "Профиль";
 	private static final String CONTACTS_BLOCK = "//div[@id = 'app']/div[1]/div/div[3]";
+
+	private Logger logger = LogManager.getLogger(ProfilePage.class.getSimpleName());
 
 	@FindBy(css = "a[href*='#personData']")
 	private WebElement personalDataTab;
@@ -61,12 +66,18 @@ public class ProfilePage extends AbstractPage {
 
 	@Override
 	public ProfilePage checkIfPageOpens() {
+		logger.log(Level.INFO, "Checking if page opens.");
 		waitForElementIsVisible(personalDataTab);
 		super.checkIfPageOpens(PAGE_UNIQUE_TEXT);
 		return this;
 	}
 
+	/**
+	 * Verifying the static fields.
+	 * @param user user business object
+	 */
 	public void verifyStaticFields(FlexibleUser user) {
+		logger.log(Level.INFO, "Verifying the user data in the static fields.");
 		Assertions.assertThat(scrollTo(fioField).getText()).as("Checking FIO.")
 				.isEqualTo(user.getLastName() + " " + user.getFirstName() + " " + user.getPatronymicName());
 		Assertions.assertThat(scrollTo(phoneNumberField).getText().replaceAll("[^0-9]", ""))
@@ -91,11 +102,13 @@ public class ProfilePage extends AbstractPage {
 				.as("Check SNILS field").isEqualTo(user.getSnilsNumber());
 		Assertions.assertThat(scrollTo(innField).getAttribute("value"))
 				.as("Check INN field").isEqualTo(user.getInnNumber());
-//		Assertions.assertThat(scrollTo(registrationAddressField).getAttribute("value"))
+		logger.log(Level.WARN, "Skipping the Registration Address");
+//TODO		Assertions.assertThat(scrollTo(registrationAddressField).getAttribute("value"))
 //				.as("Check INN field").isEqualTo(user.getRegistrationAddress());
 		Assertions.assertThat(scrollTo(registrationDateField).getAttribute("value").replaceAll("[^0-9]", ""))
 				.as("Check Registration Date Field").isEqualTo(user.getAddressRegistrationDate());
-//		Assertions.assertThat(scrollTo(residentialAddressField).getAttribute("value"))
+		logger.log(Level.WARN, "Skipping the Residential Address");
+//TODO		Assertions.assertThat(scrollTo(residentialAddressField).getAttribute("value"))
 //				.as("Check INN field").isEqualTo(user.getResidentialAddress());
 	}
 }

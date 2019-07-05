@@ -3,27 +3,21 @@
 
     <parameter name="window-width" value="1200"/>
     <parameter name="window-height" value="800"/>
-    <parameter name="implicitly-wait" value="2"/>
 
-    <test name="e2e">
-        <groups>
-            <run>
-                <include name="e2e"/>
-            </run>
-        </groups>
+    <test name="Smoke Test">
         <classes>
             <class name="SmokeTest" />
         </classes>
     </test>
 
-    <test name="registration" >
+    <test name="Registration Tests" >
         <groups>
             <run>
                 <include name="registration"/>
             </run>
         </groups>
         <classes>
-            <class name="RegistrationTest" />
+            <class name="registration.UserWithNoPatronymicTest" />
         </classes>
     </test>
     

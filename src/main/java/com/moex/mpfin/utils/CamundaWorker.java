@@ -2,15 +2,12 @@ package com.moex.mpfin.utils;
 
 import com.moex.mpfin.businessobjects.Contract;
 import com.moex.mpfin.businessobjects.user.BasicUser;
-import com.moex.mpfin.utils.dto.ModificationDto;
-import com.moex.mpfin.utils.dto.ProcessInstanceModificationInstructionDto;
+import com.moex.mpfin.businessobjects.user.FlexibleUser;
 import de.sstoehr.harreader.model.HttpStatus;
-import io.restassured.response.ExtractableResponse;
-import io.restassured.response.Response;
 import org.apache.commons.lang3.StringUtils;
 
-import static com.moex.mpfin.utils.WebDriverSingleton.getDriver;
 import static com.moex.mpfin.utils.EnvironmentProperties.getEnvProps;
+import static com.moex.mpfin.utils.WebDriverSingleton.getDriver;
 import static io.restassured.RestAssured.given;
 
 /**
@@ -26,72 +23,9 @@ public class CamundaWorker {
 	private String BUSINESS_KEY = "";
 
 	/**
-	 * Jump to step
-	 * https://docs.camunda.org/manual/7.11/reference/rest/modification/post-modification-sync/
-	 */
-	public void jumpToPhysicalIdentification() {
-		final ExtractableResponse<Response> response =
-				given()
-					.queryParam("businessKey", BUSINESS_KEY)
-					.contentType("application/json")
-				.when()
-					.get(CAMUNDA_TOOL_URL + "get-task")
-				.then()
-					.assertThat()
-					.statusCode(HttpStatus.OK.getCode())
-					.extract();
-		String processDefinitionId = response.path("task.processDefinitionId");
-		String processInstanceId = response.path("task.processInstanceId");
-
-		given()
-			.contentType("application/json")
-			.body(
-				new ModificationDto()
-					.processDefinitionId(processDefinitionId)
-					.addProcessInstanceIdsItem(processInstanceId)
-					.skipCustomListeners(false)
-					.skipIoMappings(false)
-					.addInstructionsItem(
-						new ProcessInstanceModificationInstructionDto()
-							.type("startBeforeActivity")
-							.activityId("serviceTask_getIdpStatusEBS")
-					)
-					.addInstructionsItem(
-						new ProcessInstanceModificationInstructionDto()
-							.type("cancel")
-							.activityId("onboardingPersonalData")
-							.cancelCurrentActiveActivityInstances(true)
-					)
-					.addInstructionsItem(
-						new ProcessInstanceModificationInstructionDto()
-							.type("cancel")
-							.activityId("onboardingAccessDenied")
-							.cancelCurrentActiveActivityInstances(true)
-					)
-					.addInstructionsItem(
-						new ProcessInstanceModificationInstructionDto()
-							.type("cancel")
-							.activityId("onboardingBankSelection")
-							.cancelCurrentActiveActivityInstances(true)
-					)
-					.addInstructionsItem(
-						new ProcessInstanceModificationInstructionDto()
-							.type("cancel")
-							.activityId("onboardingPhoneVerificationNumber")
-							.cancelCurrentActiveActivityInstances(true)
-					)
-			)
-		.when()
-			.post(CAMUNDA_URL + "/rest/modification/execute")
-		.then()
-			.assertThat()
-			.statusCode(HttpStatus.NO_CONTENT.getCode());
-	}
-
-	/**
 	 * Skipping EBS process.
 	 */
-	public void skipEbsProcessAndSetUserId(BasicUser user) {
+	public void skipEbsProcessAndSetUserId(FlexibleUser user) {
 		user.setUserId(
 		given()
 				.queryParam("businessKey", BUSINESS_KEY)
@@ -109,7 +43,7 @@ public class CamundaWorker {
 	/**
 	 * Skipping account opening process (status from 3 to 6).
 	 */
-	public void skipAccountOpeningAndSetContractId(BasicUser user) {
+	public void skipAccountOpeningAndSetContractId(FlexibleUser user) {
 		Contract.setContractId(
 				given()
 						.queryParam("businessKey", BUSINESS_KEY)
@@ -128,7 +62,7 @@ public class CamundaWorker {
 	/**
 	 * Skipping account initial replenishment process (status from 6 to 7).
 	 */
-	public void skipAccountDeposit(BasicUser user) {
+	public void skipAccountDeposit(FlexibleUser user) {
 		given()
 				.queryParam("businessKey", BUSINESS_KEY)
 				.queryParam("moexUserId", user.getUserId())
