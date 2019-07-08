@@ -13,7 +13,7 @@ import static com.moex.mpfin.utils.WebDriverSingleton.getDriver;
  */
 public class PageGenerator {
 
-	private static Logger logger = LogManager.getLogger(PageGenerator.class.getSimpleName());
+	private static Logger logger = LogManager.getLogger(PageGenerator.class);
 
 	/**
 	 * Generate a new Page object.

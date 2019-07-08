@@ -14,7 +14,7 @@ public class DepositConditionsPage extends AbstractPage {
 	private static final String PAGE_UNIQUE_TEXT
 			= "Открытие вклада \"" + Product.getProductName() + "\" | Банк \"" + Product.getProviderName() + "\"";
 
-	private Logger logger = LogManager.getLogger(DepositConditionsPage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@FindBy(xpath = "//input[@name='amount']")
 	private WebElement amountInput;

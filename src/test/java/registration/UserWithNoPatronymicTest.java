@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 public class UserWithNoPatronymicTest extends BaseRegistrationTest {
 
-	private Logger logger = LogManager.getLogger(UserWithNoPatronymicTest.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 	private PageGenerator generator = new PageGenerator();
 	private FlexibleUser noPatronymicUser = new NoPatronymicUser(user);
 

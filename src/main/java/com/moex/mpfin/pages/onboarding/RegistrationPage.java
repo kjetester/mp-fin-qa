@@ -14,7 +14,7 @@ public class RegistrationPage extends AbstractPage {
 
   private static final String PAGE_UNIQUE_TEXT = "Добро пожаловать на Маркетплейс Московской Биржи!";
 
-  private Logger logger = LogManager.getLogger(RegistrationPage.class.getSimpleName());
+  private Logger logger = LogManager.getLogger(this);
 
   @FindBy(xpath = "//input[@name = 'fio']")
   private WebElement fullNameInput;
@@ -120,7 +120,7 @@ public class RegistrationPage extends AbstractPage {
    * @param user user business object
    */
   private void fillPhoneNumberField(FlexibleUser user) {
-    logger.log(Level.INFO, String.format("Filling The Phone Number input with '%s'", user.getEmailAddress()));
+    logger.log(Level.INFO, String.format("Filling The Phone Number input with '%s'", user.getPhoneNumber()));
     clickViaJavaScriptExecutor(phoneInput).sendKeys(user.getPhoneNumber());
   }
 

@@ -12,7 +12,7 @@ public class EsiaLogInPage extends AbstractPage {
 
 	private static final String PAGE_UNIQUE_TEXT = "идентификации и аутентификации";
 
-	private Logger logger = LogManager.getLogger(EsiaLogInPage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@FindBy(id = "mobileOrEmail")
 	private WebElement loginInput;

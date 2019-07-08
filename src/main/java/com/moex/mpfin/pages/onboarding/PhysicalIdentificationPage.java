@@ -14,7 +14,7 @@ public class PhysicalIdentificationPage extends AbstractPage {
 
 	private static final String PAGE_UNIQUE_TEXT = "Идентифицируйтесь через Единую Биометрическую Систему";
 
-	private Logger logger = LogManager.getLogger(PhysicalIdentificationPage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@Override
 	public PhysicalIdentificationPage checkIfPageOpens() {

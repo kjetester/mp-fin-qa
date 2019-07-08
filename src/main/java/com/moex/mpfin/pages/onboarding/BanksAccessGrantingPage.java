@@ -13,7 +13,7 @@ public class BanksAccessGrantingPage extends AbstractPage {
 
 	private static final String PAGE_UNIQUE_TEXT = "Выберите банки для личного кабинета";
 
-	private Logger logger = LogManager.getLogger(BanksAccessGrantingPage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div/div[3]/div/div[1]/div/div/label[1]")
 	private WebElement aggregateCheckbox;

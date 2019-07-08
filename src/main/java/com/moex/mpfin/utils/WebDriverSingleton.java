@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class WebDriverSingleton {
 
   private static WebDriver driver;
-  private static Logger logger = LogManager.getLogger(WebDriverManager.class.getSimpleName());
+  private static Logger logger = LogManager.getLogger(WebDriverManager.class);
 
   private final static int IMPLICITLY_WAIT_TIMEOUT = 2;
 

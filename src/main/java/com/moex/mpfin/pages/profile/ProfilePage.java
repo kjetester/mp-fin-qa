@@ -14,7 +14,7 @@ public class ProfilePage extends AbstractPage {
 	private static final String PAGE_UNIQUE_TEXT = "Профиль";
 	private static final String CONTACTS_BLOCK = "//div[@id = 'app']/div[1]/div/div[3]";
 
-	private Logger logger = LogManager.getLogger(ProfilePage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@FindBy(css = "a[href*='#personData']")
 	private WebElement personalDataTab;

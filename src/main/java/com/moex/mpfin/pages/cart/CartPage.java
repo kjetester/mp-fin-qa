@@ -18,7 +18,7 @@ public class CartPage extends AbstractPage {
 	private static final String BUTTON_ON_PRODUCT_BANNER_SELECTOR = " * button";
 	private static final String BUTTON_ON_PRODUCT_BANNER_NAME_SELECTOR = "//button//span";
 
-	private Logger logger = LogManager.getLogger(CartPage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@FindBy(xpath = "//h1[contains(., 'Корзина')]")
 	private WebElement title;

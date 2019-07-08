@@ -11,7 +11,7 @@ public class DepositContractPage extends AbstractPage {
 
 	private static final String PAGE_UNIQUE_TEXT = "Ваш договор с банком подписан!";
 
-	private Logger logger = LogManager.getLogger(DepositContractPage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@FindBy(xpath = "//pre")
 	private WebElement contractTextBlock;

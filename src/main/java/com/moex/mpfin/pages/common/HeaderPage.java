@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class HeaderPage extends AbstractPage {
 
-	private Logger logger = LogManager.getLogger(HeaderPage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@Override
 	public HeaderPage checkIfPageOpens() {

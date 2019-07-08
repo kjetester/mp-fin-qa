@@ -1,6 +1,15 @@
 package com.moex.mpfin.businessobjects;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Product {
+
+	public Product() {
+		Logger logger = LogManager.getLogger(this);
+		logger.log(Level.INFO, "Creating a Product Object.");
+	}
 
 	private static final String PRODUCT_ID = "54";
 	private static final String OPTION_ID = "6382";

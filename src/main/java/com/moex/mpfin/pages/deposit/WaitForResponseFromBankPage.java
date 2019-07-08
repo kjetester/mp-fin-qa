@@ -11,7 +11,7 @@ public class WaitForResponseFromBankPage extends AbstractPage {
 
 	private static final String PAGE_UNIQUE_TEXT = "Ваша заявка обрабатывается банком.";
 
-	private Logger logger = LogManager.getLogger(WaitForResponseFromBankPage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@FindBy(xpath = "//*[@stroke='currentColor']")
 	private WebElement spinner;

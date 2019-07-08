@@ -17,7 +17,7 @@ public class IdpWorker {
 
 	private static final String IDP_URL = getEnvProps().getProperty("IDP_URL");
 
-	private Logger logger = LogManager.getLogger(IdpWorker.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	/**
 	 * Deleting the User.
@@ -25,14 +25,15 @@ public class IdpWorker {
 	 */
 	public void deleteUser(FlexibleUser user) {
 		logger.log(Level.INFO, String.format("Deleting user with E-mail: '%s'.", user.getEmailAddress()));
-		given()
+		if (given()
 				.header("Authorization", "Basic bXBfYWRtaW46UlQ2P34xV1E=")
 				.contentType("application/json")
 				.when()
 				.get(IDP_URL + user.getEmailAddress() + "/delete")
 				.then()
-				.assertThat()
-				.statusCode(HttpStatus.OK.getCode());
+				.extract().statusCode() != HttpStatus.OK.getCode()) {
+			logger.log(Level.INFO, "User is absent.");
+		}
 	}
 
 	/**
@@ -54,6 +55,4 @@ public class IdpWorker {
 				.body("middleName", equalTo(user.getPatronymicName()))
 		.body("doesNotHaveMiddleName", equalTo(user.isNoPatronymic()));
 	}
-
-
 }

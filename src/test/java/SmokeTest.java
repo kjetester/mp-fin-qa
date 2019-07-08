@@ -5,7 +5,6 @@ import com.moex.mpfin.pages.dashboard.DashboardPage;
 import com.moex.mpfin.pages.deposit.*;
 import com.moex.mpfin.pages.onboarding.*;
 import com.moex.mpfin.pages.profile.ProfilePage;
-import com.moex.mpfin.utils.CamundaWorker;
 import com.moex.mpfin.utils.PageGenerator;
 import com.moex.mpfin.utils.TestListener;
 import org.apache.logging.log4j.LogManager;
@@ -18,7 +17,7 @@ import static com.moex.mpfin.utils.WebDriverSingleton.getDriver;
 @Listeners({TestListener.class})
 public class SmokeTest extends BaseTest {
 
-  private Logger logger = LogManager.getLogger(SmokeTest.class.getSimpleName());
+  private Logger logger = LogManager.getLogger(this);
   private PageGenerator pageGen = new PageGenerator();
   private HeaderPage header = pageGen.getInstance(HeaderPage.class);
   private CartPage cart = pageGen.getInstance(CartPage.class);
@@ -71,7 +70,7 @@ public class SmokeTest extends BaseTest {
       dependsOnMethods = {"registrationSmokeTest", "contractSigningSmokeTest", "depositOpeningSmokeTest"})
   public void initialReplenishmentSmokeTest() {
 //    initialReplenishment.initialReplenishDeposit();
-    camunda.skipAccountDeposit(user);
+    camunda.skipDepositOpening(user);
     depositCard.checkIfPageOpens();
     header.goToDashboard();
     dashboard.checkIfPageOpens().verifyActiveDeposit();

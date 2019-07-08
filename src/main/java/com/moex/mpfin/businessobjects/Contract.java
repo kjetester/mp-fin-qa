@@ -1,10 +1,21 @@
 package com.moex.mpfin.businessobjects;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Contract {
+
+	private static Logger logger = LogManager.getLogger(Contract.class);
+
+	public Contract() {
+		logger.log(Level.DEBUG, "Creating a Contract Business Object.");
+	}
 
 	private static String contractId;
 
 	public static void setContractId(String contractId) {
+		logger.log(Level.DEBUG, String.format("Setting up the Contract ID as '%s'", contractId));
 		Contract.contractId = contractId;
 	}
 

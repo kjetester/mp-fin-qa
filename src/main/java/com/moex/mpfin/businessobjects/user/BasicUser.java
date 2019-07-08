@@ -1,6 +1,16 @@
 package com.moex.mpfin.businessobjects.user;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class BasicUser implements FlexibleUser {
+
+	private Logger logger = LogManager.getLogger(this);
+
+	public BasicUser() {
+		logger.log(Level.DEBUG, "Creating a Basic User Business Object.");
+	}
 
 	private static String userId = "";
 	private static final String LAST_NAME = "Колодзей";
@@ -37,6 +47,7 @@ public class BasicUser implements FlexibleUser {
 
 	@Override
 	public void setUserId(String userId) {
+		logger.log(Level.DEBUG, String.format("Setting up the User ID as '%s'", userId));
 		BasicUser.userId = userId;
 	}
 

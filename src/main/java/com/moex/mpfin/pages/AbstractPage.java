@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -16,7 +15,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public abstract class AbstractPage {
 
-  private Logger logger = LogManager.getLogger(AbstractPage.class.getSimpleName());
+  private Logger logger = LogManager.getLogger(this);
 
   private static final Integer TIMEOUT = 30;
 

@@ -3,7 +3,6 @@ import com.moex.mpfin.businessobjects.user.BasicUser;
 import com.moex.mpfin.businessobjects.user.FlexibleUser;
 import com.moex.mpfin.utils.CamundaWorker;
 import com.moex.mpfin.utils.IdpWorker;
-import io.restassured.RestAssured;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,7 +18,7 @@ import static com.moex.mpfin.utils.WebDriverSingleton.removeDriver;
 
 public class BaseTest {
 
-	private Logger logger = LogManager.getLogger();
+	private Logger logger = LogManager.getLogger(this);
 	protected CamundaWorker camunda = new CamundaWorker();
 	protected IdpWorker idp = new IdpWorker();
 	protected FlexibleUser user = new BasicUser();

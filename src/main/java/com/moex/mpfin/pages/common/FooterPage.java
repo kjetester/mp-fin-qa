@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public class FooterPage extends AbstractPage {
 
-	private Logger logger = LogManager.getLogger(FooterPage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@Override
 	public FooterPage checkIfPageOpens() {

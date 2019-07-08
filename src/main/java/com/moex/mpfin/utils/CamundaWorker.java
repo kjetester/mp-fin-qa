@@ -1,19 +1,23 @@
 package com.moex.mpfin.utils;
 
 import com.moex.mpfin.businessobjects.Contract;
-import com.moex.mpfin.businessobjects.user.BasicUser;
 import com.moex.mpfin.businessobjects.user.FlexibleUser;
 import de.sstoehr.harreader.model.HttpStatus;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static com.moex.mpfin.utils.EnvironmentProperties.getEnvProps;
 import static com.moex.mpfin.utils.WebDriverSingleton.getDriver;
 import static io.restassured.RestAssured.given;
 
 /**
- * Interaction with Camunda BPM.
+ * Interaction with the Camunda BPM.
  */
 public class CamundaWorker {
+
+	private Logger logger = LogManager.getLogger(this);
 
 	private static final String CAMUNDA_TOOL_URL = getEnvProps().getProperty("CAMUNDA_TOOL_URL");
 	private static final String CAMUNDA_URL = getEnvProps().getProperty("CAMUNDA_URL");
@@ -23,46 +27,54 @@ public class CamundaWorker {
 	private String BUSINESS_KEY = "";
 
 	/**
-	 * Skipping EBS process.
+	 * Skipping the EBS process.
 	 */
 	public void skipEbsProcessAndSetUserId(FlexibleUser user) {
-		user.setUserId(
-		given()
-				.queryParam("businessKey", BUSINESS_KEY)
-				.queryParam("moexUserId", user.getUserId())
-				.contentType("application/json")
-		.when()
-				.get(CAMUNDA_TOOL_URL + SKIP_EBS)
-		.then()
-				.assertThat()
-				.statusCode(HttpStatus.OK.getCode())
-				.extract()
-				.path("moexUserId"));
-	}
-
-	/**
-	 * Skipping account opening process (status from 3 to 6).
-	 */
-	public void skipAccountOpeningAndSetContractId(FlexibleUser user) {
-		Contract.setContractId(
+		logger.log(Level.DEBUG, String.format(
+				"Skipping 'The Physical Identification Business Process' for the process with business key '%s'", BUSINESS_KEY));
+		String userId =
 				given()
 						.queryParam("businessKey", BUSINESS_KEY)
 						.queryParam("moexUserId", user.getUserId())
 						.contentType("application/json")
-						.when()
+				.when()
+						.get(CAMUNDA_TOOL_URL + SKIP_EBS)
+				.then()
+						.assertThat()
+						.statusCode(HttpStatus.OK.getCode())
+						.extract()
+						.path("moexUserId");
+		user.setUserId(userId);
+	}
+
+	/**
+	 * Skipping an account opening process (status from 3 to 6).
+	 */
+	public void skipAccountOpeningAndSetContractId(FlexibleUser user) {
+		logger.log(Level.DEBUG, String.format(
+				"Skipping 'The Account Opening Business Process' for the process with business key '%s'", BUSINESS_KEY));
+		String contractId =
+				given()
+						.queryParam("businessKey", BUSINESS_KEY)
+						.queryParam("moexUserId", user.getUserId())
+						.contentType("application/json")
+				.when()
 						.get(CAMUNDA_TOOL_URL + SKIP_ACCOUNT_OPENING)
-						.then()
+				.then()
 						.assertThat()
 						.statusCode(HttpStatus.OK.getCode())
 						.assertThat()
 						.extract()
-						.path("contractId"));
+						.path("contractId");
+		Contract.setContractId(contractId);
 	}
 
 	/**
-	 * Skipping account initial replenishment process (status from 6 to 7).
+	 * Skipping an account initial replenishment process and opening a deposit (status from 6 to 7).
 	 */
-	public void skipAccountDeposit(FlexibleUser user) {
+	public void skipDepositOpening(FlexibleUser user) {
+		logger.log(Level.DEBUG, String.format(
+				"Skipping 'The Deposit Opening Business Process' for the process with business key '%s'", BUSINESS_KEY));
 		given()
 				.queryParam("businessKey", BUSINESS_KEY)
 				.queryParam("moexUserId", user.getUserId())
@@ -80,6 +92,8 @@ public class CamundaWorker {
 	 */
 	public CamundaWorker setBusinessKey() {
 		BUSINESS_KEY = StringUtils.substringAfter(getDriver().getCurrentUrl(), "&businessKey=");
+		logger.log(Level.DEBUG, String.format(
+				"The Business key '%s' has been set.", BUSINESS_KEY));
 		return this;
 	}
 }

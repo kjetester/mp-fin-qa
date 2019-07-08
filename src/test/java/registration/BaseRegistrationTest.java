@@ -18,7 +18,7 @@ import static com.moex.mpfin.utils.WebDriverSingleton.removeDriver;
 
 public class BaseRegistrationTest {
 
-	private Logger logger = LogManager.getLogger(BaseRegistrationTest.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 	protected CamundaWorker camunda = new CamundaWorker();
 	protected IdpWorker idp = new IdpWorker();
 	protected FlexibleUser user = new BasicUser();

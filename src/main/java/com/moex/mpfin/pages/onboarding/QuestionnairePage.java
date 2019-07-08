@@ -18,7 +18,7 @@ public class QuestionnairePage extends AbstractPage {
 	private static final String PAGE_UNIQUE_TEXT = "Учётная запись Госуслуги успешно привязана";
 	private static final String QUESTIONS_BLOCK_SELECTOR = "//form/div[5]";
 
-	private Logger logger = LogManager.getLogger(QuestionnairePage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@FindBy(xpath = "//form/div[1]//input[@name='fio']")
 	private WebElement fioField;

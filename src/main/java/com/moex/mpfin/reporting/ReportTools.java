@@ -18,7 +18,7 @@ import static com.moex.mpfin.utils.WebDriverSingleton.getDriver;
 
 public class ReportTools {
 
-  private static Logger logger = LogManager.getLogger(ReportTools.class.getSimpleName());
+  private static Logger logger = LogManager.getLogger(ReportTools.class);
   /**
    * Takes a screenshot with a frame.
    * @param element an element to highlight

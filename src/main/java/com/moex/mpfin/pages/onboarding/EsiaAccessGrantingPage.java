@@ -12,7 +12,7 @@ public class EsiaAccessGrantingPage extends AbstractPage {
 	private static final String PAGE_UNIQUE_TEXT
 			= "Подтвердите на сайте Госуслуг своё согласие на передачу данных маркетплейсу Московской Биржи.";
 
-	private Logger logger = LogManager.getLogger(EsiaAccessGrantingPage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@FindBy(xpath = "//div[3]/button")
 	private WebElement submitButton;

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DepositInitialReplenishmentPage extends AbstractPage {
 
-	private Logger logger = LogManager.getLogger(DepositInitialReplenishmentPage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@FindBy(xpath = "//*[contains(text(), 'Сумма вклада')]")
 	private WebElement totalAmount;

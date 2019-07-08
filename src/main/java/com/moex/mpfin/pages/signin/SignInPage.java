@@ -11,7 +11,7 @@ public class SignInPage extends AbstractPage {
 
 	private static final String PAGE_UNIQUE_TEXT = "Уже регистрировались у нас? Войдите с помощью";
 
-	private Logger logger = LogManager.getLogger(SignInPage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@FindBy(xpath = "//section[@id = 'login']//button")
 	private WebElement submitButton;

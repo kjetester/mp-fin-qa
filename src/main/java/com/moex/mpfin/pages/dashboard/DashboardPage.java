@@ -17,7 +17,7 @@ public class DashboardPage extends AbstractPage {
 
 	private static final String DASHBOARD_URL = "/dashboard";
 
-	private Logger logger = LogManager.getLogger(DashboardPage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@FindBy(xpath = "//div[contains(text(), 'Мои вклады')]/..")
 	private WebElement myDepositsBlock;

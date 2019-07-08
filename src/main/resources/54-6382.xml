@@ -1,0 +1,888 @@
+<product xmlns="http://moex.com/mp/product" xmlns:d="http://moex.com/mp/product/deposit" xmlns:c="http://moex.com/mp/common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="d:Deposit">
+    <id>6382</id>
+    <name>Очень удобный тестовый депозит</name>
+    <contractTemplate>Приложение №21.1
+        к Правилам открытия, обслуживания и закрытия банковских счетов и счетов по вкладам физических лиц в ПАО КБ "Центр-инвест"
+        г. Ростов-на-Дону							                              {{currentDate: }}
+        ЗАЯВЛЕНИЕ-ОФЕРТА №{{номер договора: }} К ДОГОВОРУ КОМПЛЕКСНОГО БАНКОВСКОГО ОБСЛУЖИВАНИЯ № {{номер комплексного договора: }}
+        Я, нижеподписавшийся (далее – ВКЛАДЧИК),  прошу ПАО КБ "Центр-инвест" (далее – БАНК) заключить со мною посредством акцепта настоящего Заявления-оферты следующий договор (далее – Договор) срочного банковского вклада на {{customerDepositOptions.duration.value: }} {{customerDepositOptions.duration.duration: }}:
+        1. ОСНОВНЫЕ УСЛОВИЯ
+        1.1. ВКЛАДЧИК вносит во вклад  безналичным путем , а БАНК принимает  денежные  средства  в сумме {{customerDepositOptions.amount: }} {{customerDepositOptions.amount.string: }} {{customerDepositOptions.сurrency: }}.
+        1.2. ВКЛАДЧИКУ открывается счет по срочному вкладу (далее – счет по вкладу)
+        1.3. Для выплаты начисленных процентов по вкладу ВКЛАДЧИКУ открывается банковский счет для расчетов физических лиц.
+        1.4. Срок вклада ({{customerDepositOptions.duration.duration: }}): {{customerDepositOptions.duration.value: }}.
+        1.5. Минимальная сумма вклада: {{customerDepositOptions.amount: }} {{customerDepositOptions.amount.string: }} {{customerDepositOptions.сurrency: }}.
+        1.7. Процентная ставка по вкладу на день подписания настоящего Договора составляет {{customerDepositOptions.annualRate: }} % годовых и не подлежит изменению в течение срока, установленного в п. 1.4 настоящего Договора, за исключением случая, предусмотренного в п. 1.7.1 настоящего Договора.
+        1.8. В течение срока действия ВКЛАДЧИК вправе вносить во вклад дополнительные взносы как наличными деньгами, так и безналичным путем. Минимальная сумма дополнительного взноса составляет {{customerDepositOptions.amount: }} {{customerDepositOptions.сurrency: }}. ВКЛАДЧИК вправе осуществлять дополнительные взносы в сумме, не превышающей первоначальную сумму вклада.
+        1.8.1. Расходование денежных средств со счета, в течение срока, указанного в п.1.4. (в том числе срока пролонгации вклада), не предусмотрено.
+        1.9. Начисленные проценты выплачиваются ВКЛАДЧИКУ по истечении срока вклада путем перечисления на банковский счет для расчетов физических лиц.
+        1.10. В день истечения последнего пролонгированного срока, если ВКЛАДЧИК не предъявил требование о возврате суммы вклада, сумма вклада перечисляется на  банковский счет для расчетов физических лиц.
+        1.11. При досрочном востребовании ВКЛАДЧИКОМ всей суммы вклада или его части до дня окончания основного срока в соответствии с п. 1.5 настоящего Договора или до окончания срока пролонгации вклада в соответствии с п.1.10 настоящего Договора, проценты за срок нахождения денежных средств во вкладе исчисляются (пересчитываются) исходя из процентной ставки, установленной БАНКОМ по вкладам «до востребования» на момент востребования суммы вклада.
+        1.13. Подписывая настоящий Договор, ВКЛАДЧИК подтверждает, что обязуется ознакомиться и соглашается с условиями по вкладам, размещенным на официальном сайте БАНКА http://bank.ru/ .
+        1.14. Клиент согласен с порядком совершения действий для акцепта: 1) заключить Договор банковского счета, 2) открыть банковский счет в соответствии с законодательством РФ.
+        1.15.Клиент согласен с тем, что Банк примет решение о заключении Договора в течение рабочего дня с момента получения настоящего Заявления-оферты, и заявляет, что настоящее Заявление-оферта не может быть отозвано мною в течение срока, установленного для акцепта. В случае согласия Банка на заключение со мною Договора, на условиях, предложенных в настоящем Заявлении-оферте, прошу Банк произвести акцепт настоящего Заявления-оферты путем совершения действий, указанных в п. 1.14. настоящего Заявления-оферты.
+        1.16. Настоящим ВКЛАДЧИК дает акцепт на право БАНКА осуществлять перевод денежных средств между счетами ВКЛАДЧИКА в ПАО КБ "Центр-инвест" в пределах остатка средств на счете при закрытии договора банковского вклада. Все расходные операции ВКЛАДЧИКА осуществляются со счета ВКЛАДЧИКА, в случае отсутствия иного распоряжения ВКЛАДЧИКА.
+
+        2. АДРЕСА, РЕКВИЗИТЫ И ПОДПИСИ СТОРОН
+
+        2.1 ВКЛАДЧИК (ПРЕДСТАВИТЕЛЬ): {{customer.lastName: }}     {{customer.firstName: }}     {{customer.middleName: }}
+        ДАТА РОЖДЕНИЯ {{customer.birthDate: }}
+        МЕСТО РОЖДЕНИЯ {{customer.birthPlace: }}
+        ГРАЖДАНСТВО (ПОДДАНСТВО): {{customer.citizenship: }}
+        РЕЗИДЕНТ / НЕРЕЗИДЕНТ: {{customer.isResident: }}
+        ИНН (при наличии): {{customer.INN: }}
+
+        ДОКУМЕНТ, УДОСТОВЕРЯЮЩИЙ ЛИЧНОСТЬ
+        ВИД ДОКУМЕНТА:  {{customer.identityDocument.type: }}
+        СЕРИЯ: {{customer.identityDocument.serial: }}
+        НОМЕР {{ customer.identityDocument.number: }}
+        КОГДА ВЫДАН: {{customer.identityDocument.issueData: }}
+        КОД ПОДРАЗДЕЛЕНИЯ {{ customer.identityDocument.issueAuthorityCode: }}
+        КЕМ ВЫДАН:  {{ customer.identityDocument.issueAuthorityName: }}
+
+
+        АДРЕС МЕСТА ЖИТЕЛЬСТВА (РЕГИСТРАЦИИ):
+
+        Почтовый индекс: {{customer.registrationAddress.zipCode: }}
+        Страна: {{customer.registrationAddress.country: }}
+        Город: {{customer.registrationAddress.city: }}
+        Название региона страны: {{customer.registrationAddress.region: }}
+        Внутригородской район: {{customer.registrationAddress.district: }}
+        Район: {{customer.registrationAddress.area: }}
+        Поселение: {{customer.registrationAddress.settlement: }}
+        Дополнительная территория: {{customer.registrationAddress.additionArea: }}
+        Улица: {{customer.registrationAddress.street: }}
+        Строение: {{customer.registrationAddress.building: }}
+        Корпус: {{customer.registrationAddress.frame: }}
+        Дом: {{customer.registrationAddress.house: }}
+        Квартира: {{customer.registrationAddress.flat: }}
+        Дата регистрации: {{customer.registrationDate: }}
+
+        АДРЕС МЕСТА ПРОЖИВАНИЯ
+
+        Почтовый индекс: {{customer.residentialAddress.zipCode: }}
+        Страна: {{customer.residentialAddress.country: }}
+        Город: {{customer.residentialAddress.city: }}
+        Название региона страны: {{customer.residentialAddress.region: }}
+        Внутригородской район: {{customer.residentialAddress.district: }}
+        Район: {{customer.residentialAddress.area: }}
+        Поселение: {{customer.residentialAddress.settlement: }}
+        Дополнительная территория: {{customer.residentialAddress.additionArea: }}
+        Улица: {{customer.residentialAddress.street: }}
+        Строение: {{customer.residentialAddress.building: }}
+        Корпус: {{customer.residentialAddress.frame: }}
+        Дом: {{customer.residentialAddress.house: }}
+        Квартира: {{customer.residentialAddress.flat: }}
+
+
+        Моб.телефон: {{customer.phone1.value: }}
+        Дом.телефон: {{customer.phone2.value: }}
+        Раб.телефон: {{customer.phone3.value: }}
+        Емейл: {{customer.email.value: }}
+
+
+
+        2.2 БАНК:  ПАО КБ "Центр-инвест"
+        344000, г. Ростов-на-Дону, пр. Соколова, 62
+        к/с 30101810100000000762
+        ОТДЕЛЕНИЕ РОСТОВ-НА-ДОНУ Г.Ростов-на-Дону
+        БИК 046015762
+        ИНН 6163011391
+        тел. 2-000-000</contractTemplate>
+    <active>true</active>
+    <externalUrl>https://www.centrinvest.ru/ru/fiz/vklady/</externalUrl><!--ВНЕШНЯЯ ССЫЛКА НА ДЕПОЗИТНЫЙ ПРОДУКТ-->
+    <activeFrom>2019-01-01T00:00:00Z</activeFrom><!--ДАТА И ВРЕМЯ НАЧАЛА СРОКА АКТИВНОСТИ ДЕПОЗИТНОГО ПРОДУКТА-->
+    <activeTo>2019-12-31T23:59:59Z</activeTo><!--ДАТА И ВРЕМЯ ОКОНЧАНИЯ СРОКА АКТИВНОСТИ ДЕПОЗИТНОГО ПРОДУКТА-->
+    <regions><!--СПИСОК РЕГИОНОВ В КОТОРЫХ ДОСТУПЕН ПРОДУКТ-->
+        <c:region>61</c:region>
+        <c:region>77</c:region>
+        <c:region>50</c:region>
+    </regions>
+    <links><!--ССЫЛКИ НА РЕСУРСЫ-->
+        <link>
+            <type>URL</type><!--тип ссылки-->
+            <value>http://cib2.dev.cinet.ru/ru/contract</value><!--ССЫЛКА-->
+            <description>Вклады</description><!--описание ссылки-->
+        </link>
+    </links>
+    <d:options>
+        <d:option>
+            <d:id>6382</d:id>
+            <d:name>Очень удобный тестовый депозит</d:name>
+            <d:active>true</d:active>
+            <d:currency>643</d:currency>
+            <d:duration><!--СРОК РАЗМЕЩЕНИЯ
+			идентификатор срока размещения депозита - term: 1 - фиксированный, 2 - по выбору клиента, 3 - нет
+			идентификатор типа мин/макс срока депозита - duration: 1 - день, 2 - месяц, 3 - год, 4 - бессрочный, 5 - нефиксированный-->
+                <d:term>2</d:term><d:duration>1</d:duration><d:minimum>1</d:minimum><d:maximum>365</d:maximum>
+            </d:duration>
+            <d:capitalization><!--КАПИТАЛИЗАЦИЯ-->
+                <d:partialWithdrawalPercentsPossible>false</d:partialWithdrawalPercentsPossible><!--возможно ли снятие последних процентов при капитализации-->
+                <d:type>3</d:type><!--идентификатор капитализации вклада 1 - да, 2 - нет, 3 - на выбор клиента-->
+                <d:periods>
+                    <d:period><d:type>1</d:type></d:period>
+                    <d:period><d:type>3</d:type></d:period>
+                    <d:period><d:type>2</d:type></d:period>
+                    <d:period><d:type>4</d:type></d:period>
+                    <d:period><d:type>7</d:type><d:value>100</d:value></d:period><!--период в капитализации в днях mandatory if type=7-->
+                    <d:period><d:type>6</d:type></d:period>
+                    <d:period><d:type>5</d:type></d:period>
+                    <d:period><d:type>8</d:type></d:period>
+                </d:periods><!--возможные периоды капитализаций: 1 - ежедневно, 2 - еженедельно, 3 - ежемечячно, 4 - ежеквартально, 5 - раз в полгода, 6 - ежегодно, 7 - произвольно, 8 - в конце срока-->
+            </d:capitalization>
+            <d:earlyTermination>2</d:earlyTermination><!--ИДЕНТИФИКАТОР СПОСОБА ДОСРОЧНОГО РАСТОРЖЕНИЯ 1 - по ставке до востребования, 2 - на льготных условиях-->
+            <d:minimumBalance>0.01</d:minimumBalance><!--МИНИМАЛЬНАЯ СУММА ВКЛАДА-->
+            <d:maximumBalance>9999.99</d:maximumBalance><!--МАКСИМАЛЬНАЯ СУММА ВКЛАДА-->
+            <d:minimumPrimaryBalance>0</d:minimumPrimaryBalance><!--МИНИМАЛЬНАЯ СУММА ПЕРНОНАЧАЛЬНОГО ВЗНОСА-->
+            <d:maximumPrimaryBalance>5000</d:maximumPrimaryBalance><!--МАКСИМАЛЬНАЯ СУММА ПЕРВОНАЧАЛЬНОГО ВЗНОСА-->
+            <d:minimumReduceBalances><!--ОГРАНИЧЕНИЯ МИНИМАЛЬНЫХ НЕСНИЖАЕМЫХ ОСТАТКОВ
+			type - тип ограничения неснижаемого остатка:
+				1 - равен фиксированной сумме,
+				2 - равен минимальной сумме вклада,
+				3 - равен первоначальной сумме вклада,
+				4 - процент от первоначальной суммы вклада,
+				5 - процент от текущей суммы вклада,
+				6 - процент от максимальной суммы вклада, которая находилась на счету,
+				7 - по выбору клиента (фиксированный),
+				8 -	по выбору клиента (с возможностью изменения)
+			amount: сумма неснижаемого остатка по счету (заполняется для типов 1,7,8)
+			percent: процент для расчета неснижаемого остатка по счету (заполняется для типов 4,5,6)-->
+                <d:minimumReduceBalance><d:type>1</d:type><d:amount>2999</d:amount></d:minimumReduceBalance>
+                <d:minimumReduceBalance><d:type>2</d:type></d:minimumReduceBalance>
+                <d:minimumReduceBalance><d:type>3</d:type></d:minimumReduceBalance>
+                <d:minimumReduceBalance><d:type>4</d:type><d:percent>20.0</d:percent></d:minimumReduceBalance>
+                <d:minimumReduceBalance><d:type>5</d:type><d:percent>50.09</d:percent></d:minimumReduceBalance>
+                <d:minimumReduceBalance><d:type>6</d:type><d:percent>70.50</d:percent></d:minimumReduceBalance>
+                <d:minimumReduceBalance><d:type>7</d:type><d:amount>1999.99</d:amount></d:minimumReduceBalance>
+                <d:minimumReduceBalance><d:type>8</d:type><d:amount>999.99</d:amount></d:minimumReduceBalance>
+            </d:minimumReduceBalances>
+            <d:partialWithdrawal><!--ИНФОРМАЦИЯ О ВОЗМОЖНОСТИ ЧАСТИЧНОГО СНЯТИЯ
+				Если отсутствует, то частичное снятие невозможно
+			type: Тип ограничения пополнения/снятия:
+				1 - Минимальная сумма операции,
+				2 - Максимальная сумма операции,
+				3 - Количество операций,
+				4 - Cрок с момента открытия вклада,
+				5 - Cрок до момента завершения вклада,
+				6 - Процент от остатка вклада,
+				7 - Процент от неснижаемого остатка,
+				8 - Иное
+			period: Тип периода. Заполняется только для types 3, 4, 5:
+				1 - день,
+				2 - месяц,
+				3 - год
+			value: Значение периода. Заполняется для types 3,4,5
+			amount: Значение ограничения. Заполняется для types 1, 2, 3, 6, 7-->
+                <d:restrictions>
+                    <d:restriction><d:type>1</d:type><d:amount>1000</d:amount></d:restriction>
+                    <d:restriction><d:type>2</d:type><d:amount>5000.99</d:amount></d:restriction>
+                    <d:restriction><d:type>3</d:type><d:period>1</d:period><d:value>30</d:value><d:amount>5</d:amount></d:restriction>
+                    <d:restriction><d:type>4</d:type><d:period>1</d:period><d:value>90</d:value></d:restriction>
+                    <d:restriction><d:type>5</d:type><d:period>1</d:period><d:value>60</d:value></d:restriction>
+                    <d:restriction><d:type>6</d:type><d:amount>50</d:amount></d:restriction>
+                    <d:restriction><d:type>7</d:type><d:amount>50</d:amount></d:restriction>
+                </d:restrictions>
+            </d:partialWithdrawal>
+            <d:interestPayments><!--СПОСОБЫ ВЫПЛАТЫ ПРОЦЕНТОВ
+			methods: 1=НаТекущийСчёт 4=Перечисление%%кТелуВклада 5=НаНоминальныйСчёт
+			periods: 1=ВКонцеСрока 2=ПроцентыВперёд 3=Ежедневно 4=Еженедельно 5=Ежемесячено 6=Ежеквартально 7=РазВПолгода 8=Ежегодно
+			accountFromCustomer: Может ли счет для выплаты процентов быть выбран клиентом?-->
+                <d:interestPayment><d:method>1</d:method><d:period>2</d:period><d:accountFromCustomer>true</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>1</d:method><d:period>1</d:period><d:accountFromCustomer>false</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>1</d:method><d:period>3</d:period><d:accountFromCustomer>true</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>1</d:method><d:period>4</d:period><d:accountFromCustomer>false</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>1</d:method><d:period>5</d:period><d:accountFromCustomer>true</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>1</d:method><d:period>6</d:period><d:accountFromCustomer>false</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>1</d:method><d:period>8</d:period><d:accountFromCustomer>true</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>1</d:method><d:period>7</d:period><d:accountFromCustomer>false</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>4</d:method><d:period>2</d:period><d:accountFromCustomer>false</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>5</d:method><d:period>2</d:period><d:accountFromCustomer>true</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>5</d:method><d:period>1</d:period><d:accountFromCustomer>false</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>5</d:method><d:period>3</d:period><d:accountFromCustomer>false</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>5</d:method><d:period>4</d:period><d:accountFromCustomer>false</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>5</d:method><d:period>5</d:period><d:accountFromCustomer>false</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>5</d:method><d:period>6</d:period><d:accountFromCustomer>false</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>5</d:method><d:period>7</d:period><d:accountFromCustomer>false</d:accountFromCustomer></d:interestPayment>
+                <d:interestPayment><d:method>5</d:method><d:period>8</d:period><d:accountFromCustomer>false</d:accountFromCustomer></d:interestPayment>
+            </d:interestPayments>
+            <d:rateIncreases><!--ИНФОРМАЦИЯ О ВОЗМОЖНОСТИ УВЕЛИЧЕНИЯ СТАВКИ
+				Если отсутствует, то невозможно
+			types:
+			1 - При изменении суммы
+			2 - При изменении срока
+			3 - При пролонгации
+			4 - При предъявлении пенсионного удостоверения
+			5 - При других условиях-->
+                <d:type>1</d:type>
+                <d:type>2</d:type>
+                <d:type>3</d:type>
+                <d:type>4</d:type>
+                <d:type>5</d:type>
+            </d:rateIncreases>
+            <d:rateDecreases><!--ИНФОРМАЦИЯ О ВОЗМОЖНОСТИ УМЕНЬШЕНИЯ СТАВКИ
+				Если отсутствует, то невозможно
+			types:
+			1 - При изменении суммы
+			2 - При изменении срока
+			3 - При пролонгации
+			4 - При предъявлении пенсионного удостоверения
+			5 - При других условиях-->
+                <d:type>1</d:type>
+                <d:type>2</d:type>
+                <d:type>3</d:type>
+                <d:type>4</d:type>
+                <d:type>5</d:type>
+            </d:rateDecreases>
+            <d:prolongations><!--СПОСОБЫ ПРОЛОНГАЦИИ
+			1 - на тот же продукт
+			2 - на до востребования
+			3 - на другой продукт -->
+                <d:prolongation><d:type>2</d:type><d:maximumCount>2</d:maximumCount></d:prolongation>
+                <d:prolongation><d:type>3</d:type><d:maximumCount>10</d:maximumCount></d:prolongation>
+                <d:prolongation><d:type>1</d:type><d:maximumCount>1</d:maximumCount></d:prolongation>
+            </d:prolongations>
+            <d:replenishment><!--ИНФОРМАЦИЯ О ВОЗМОЖНОСТИ ЧАСТИЧНОГО ПОПОЛНЕНИЯ
+				Если отсутствует, то невозможно
+			type: Тип ограничения пополнения/снятия:
+				1 - Минимальная сумма операции,
+				2 - Максимальная сумма операции,
+				3 - Количество операций,
+				4 - Cрок с момента открытия вклада,
+				5 - Cрок до момента завершения вклада,
+				6 - Процент от остатка вклада,
+				7 - Процент от неснижаемого остатка,
+				8 - Иное
+			period: Тип периода. Заполняется только для types 3, 4, 5:
+				1 - день,
+				2 - месяц,
+				3 - год
+			value: Значение периода. Заполняется для types 3,4,5
+			amount: Значение ограничения. Заполняется для types 1, 2, 3, 6, 7-->
+                <d:restrictions>
+                    <d:restriction><d:type>1</d:type><d:amount>1000</d:amount></d:restriction>
+                    <d:restriction><d:type>2</d:type><d:amount>5000.99</d:amount></d:restriction>
+                    <d:restriction><d:type>3</d:type><d:period>1</d:period><d:value>30</d:value><d:amount>5</d:amount></d:restriction>
+                    <d:restriction><d:type>4</d:type><d:period>1</d:period><d:value>90</d:value></d:restriction>
+                    <d:restriction><d:type>5</d:type><d:period>1</d:period><d:value>60</d:value></d:restriction>
+                    <d:restriction><d:type>6</d:type><d:amount>50</d:amount></d:restriction>
+                    <d:restriction><d:type>7</d:type><d:amount>50</d:amount></d:restriction>
+                </d:restrictions>
+            </d:replenishment>
+            <d:specialTypes><!--СПИСОК ИДЕНТИФИКАТОРОВ СПЕЦИАЛЬНОГО ТИПА ВКЛАДА
+			1 - Мультивалютный,
+			2 - Пенсионный,
+			3 - Сезонный,
+			4 - Детский,
+			5 - Инвестиционный,
+			6 - Ипотечный,
+			7 - Зарплатный,
+			8 - Страховой,
+			9 - Благотворительный,
+			10 - Другой-->
+                <d:specialType>1</d:specialType>
+                <d:specialType>2</d:specialType>
+                <d:specialType>3</d:specialType>
+                <d:specialType>4</d:specialType>
+                <d:specialType>5</d:specialType>
+                <d:specialType>6</d:specialType>
+                <d:specialType>7</d:specialType>
+                <d:specialType>8</d:specialType>
+                <d:specialType>9</d:specialType>
+                <d:specialType>10</d:specialType>
+            </d:specialTypes>
+            <d:rates><!--ГОДОВАЯ ПРОЦЕНТНАЯ СТАВКА
+			types: 1 - фиксированная, 2 - плавающая, 3 - комбинированная
+			minimumAmount: Минимальный порог суммы депозита
+			maximumAmount: Максимальный предел суммы депозита
+			minimumRate: Минимальный порог процентной ставки
+			maximumRate: Максимальный порог процентной ставки
+			maximumPeriod: Максимальный срок. types: 1 - день, 2 - месяц, 3 - год
+			minimumPeriod: Минимальный срок. types: 1 - день, 2 - месяц, 3 - год
+			financialIndicator: Финансовый идентификатор-->
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>0</d:minimumRate><d:maximumRate>0</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>1</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>1</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>0.01</d:minimumRate><d:maximumRate>0.01</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>3</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>2</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>0.9</d:minimumRate><d:maximumRate>0.9</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>7</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>4</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>1</d:minimumRate><d:maximumRate>1</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>11</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>8</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>2</d:minimumRate><d:maximumRate>2</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>15</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>12</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>2.22</d:minimumRate><d:maximumRate>2.22</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>19</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>16</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>10</d:minimumRate><d:maximumRate>10</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>23</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>20</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>10.01</d:minimumRate><d:maximumRate>10.01</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>27</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>24</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>19.99</d:minimumRate><d:maximumRate>19.99</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>30</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>28</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>99.99</d:minimumRate><d:maximumRate>99.99</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>365</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>31</d:value></d:minimumPeriod>
+                </d:rate>
+
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>0.09</d:minimumRate><d:maximumRate>0.09</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>1</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>1</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>1.01</d:minimumRate><d:maximumRate>1.01</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>3</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>2</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>2.9</d:minimumRate><d:maximumRate>2.9</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>7</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>4</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>3</d:minimumRate><d:maximumRate>3</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>11</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>8</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>4</d:minimumRate><d:maximumRate>4</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>15</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>12</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>5.22</d:minimumRate><d:maximumRate>5.22</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>19</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>16</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>16</d:minimumRate><d:maximumRate>16</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>23</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>20</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>17.01</d:minimumRate><d:maximumRate>17.01</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>27</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>24</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>19.99</d:minimumRate><d:maximumRate>19.99</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>30</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>28</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>109.99</d:minimumRate><d:maximumRate>109.99</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>365</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>31</d:value></d:minimumPeriod>
+                </d:rate>
+
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>1.09</d:minimumRate><d:maximumRate>1.09</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>1</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>1</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>2.01</d:minimumRate><d:maximumRate>2.01</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>3</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>2</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>3.9</d:minimumRate><d:maximumRate>3.9</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>7</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>4</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>4</d:minimumRate><d:maximumRate>4</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>11</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>8</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>5</d:minimumRate><d:maximumRate>5</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>15</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>12</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>6.22</d:minimumRate><d:maximumRate>6.22</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>19</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>16</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>17</d:minimumRate><d:maximumRate>17</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>23</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>20</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>18.01</d:minimumRate><d:maximumRate>18.01</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>27</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>24</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>20.99</d:minimumRate><d:maximumRate>20.99</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>30</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>28</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>110</d:minimumRate><d:maximumRate>110</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>365</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>31</d:value></d:minimumPeriod>
+                </d:rate>
+
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>3.09</d:minimumRate><d:maximumRate>3.09</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>1</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>1</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>5.01</d:minimumRate><d:maximumRate>5.01</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>3</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>2</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>5.9</d:minimumRate><d:maximumRate>5.9</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>7</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>4</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>6</d:minimumRate><d:maximumRate>6</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>11</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>8</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>7</d:minimumRate><d:maximumRate>7</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>15</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>12</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>7.22</d:minimumRate><d:maximumRate>7.22</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>19</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>16</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>18</d:minimumRate><d:maximumRate>18</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>23</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>20</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>18.01</d:minimumRate><d:maximumRate>18.01</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>27</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>24</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>21.99</d:minimumRate><d:maximumRate>21.99</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>30</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>28</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>111</d:minimumRate><d:maximumRate>111</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>365</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>31</d:value></d:minimumPeriod>
+                </d:rate>
+            </d:rates>
+            <d:penaltyRates><!--ПРОЦЕНТНЫЕ СТАВКИ ПРИ ДОСРОЧНОМ РАСТОРЖЕНИИ
+			types: 1=фиксированная 2=плавающая 3=комбинированная
+			minimumAmount: Минимальный порог суммы депозита
+			maximumAmount: Максимальный предел суммы депозита
+			minimumRate: Минимальный порог процентной ставки
+			maximumRate: Максимальный порог процентной ставки
+			maximumPeriod: Максимальный срок. types: 1=день 2=месяц 3=год
+			minimumPeriod: Минимальный срок. types: 1=день 2=месяц 3=год
+			financialIndicator: Финансовый идентификатор-->
+
+                <!--0.00-999.99-->
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>0</d:minimumRate><d:maximumRate>0</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>1</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>0</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>0.01</d:minimumRate><d:maximumRate>0.01</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>3</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>2</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>0.02</d:minimumRate><d:maximumRate>0.02</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>7</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>4</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>0.03</d:minimumRate><d:maximumRate>0.03</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>11</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>8</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>0.04</d:minimumRate><d:maximumRate>0.04</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>15</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>12</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>0.05</d:minimumRate><d:maximumRate>0.05</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>19</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>16</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>0.06</d:minimumRate><d:maximumRate>0.06</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>23</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>20</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>0.07</d:minimumRate><d:maximumRate>0.07</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>27</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>24</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>0.08</d:minimumRate><d:maximumRate>0.08</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>30</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>28</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>0.00</d:minimumAmount><d:maximumAmount>999.99</d:maximumAmount>
+                    <d:minimumRate>0.09</d:minimumRate><d:maximumRate>0.09</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>365</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>31</d:value></d:minimumPeriod>
+                </d:rate>
+                <!--1000-1999.99-->
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>0.10</d:minimumRate><d:maximumRate>0.10</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>1</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>0</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>0.11</d:minimumRate><d:maximumRate>0.11</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>3</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>2</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>0.12</d:minimumRate><d:maximumRate>0.12</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>7</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>4</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>0.12</d:minimumRate><d:maximumRate>0.12</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>11</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>8</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>0.13</d:minimumRate><d:maximumRate>0.13</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>15</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>12</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>0.14</d:minimumRate><d:maximumRate>0.14</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>19</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>16</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>0.15</d:minimumRate><d:maximumRate>0.15</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>23</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>20</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>0.16</d:minimumRate><d:maximumRate>0.16</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>27</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>24</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>0.17</d:minimumRate><d:maximumRate>0.17</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>30</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>28</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>1000</d:minimumAmount><d:maximumAmount>1999.99</d:maximumAmount>
+                    <d:minimumRate>0.18</d:minimumRate><d:maximumRate>0.18</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>365</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>31</d:value></d:minimumPeriod>
+                </d:rate>
+                <!--2000-6999.99-->
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>0.19</d:minimumRate><d:maximumRate>0.19</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>1</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>0</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>0.20</d:minimumRate><d:maximumRate>0.20</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>3</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>2</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>0.21</d:minimumRate><d:maximumRate>0.21</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>7</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>4</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>0.22</d:minimumRate><d:maximumRate>0.22</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>11</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>8</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>0.23</d:minimumRate><d:maximumRate>0.23</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>15</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>12</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>0.24</d:minimumRate><d:maximumRate>0.24</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>19</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>16</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>0.25</d:minimumRate><d:maximumRate>0.25</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>23</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>20</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>0.26</d:minimumRate><d:maximumRate>0.26</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>27</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>24</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>0.27</d:minimumRate><d:maximumRate>0.27</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>30</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>28</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>2000</d:minimumAmount><d:maximumAmount>6999.99</d:maximumAmount>
+                    <d:minimumRate>0.28</d:minimumRate><d:maximumRate>0.28</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>365</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>31</d:value></d:minimumPeriod>
+                </d:rate>
+                <!--7000-9999.99-->
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>0.29</d:minimumRate><d:maximumRate>0.29</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>1</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>0</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>0.30</d:minimumRate><d:maximumRate>0.30</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>3</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>2</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>0.31</d:minimumRate><d:maximumRate>0.31</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>7</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>4</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>0.32</d:minimumRate><d:maximumRate>0.32</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>11</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>8</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>0.33</d:minimumRate><d:maximumRate>0.33</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>15</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>12</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>0.34</d:minimumRate><d:maximumRate>0.34</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>19</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>16</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>0.35</d:minimumRate><d:maximumRate>0.35</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>23</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>20</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>0.36</d:minimumRate><d:maximumRate>0.36</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>27</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>24</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>0.37</d:minimumRate><d:maximumRate>0.37</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>30</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>28</d:value></d:minimumPeriod>
+                </d:rate>
+                <d:rate>
+                    <d:type>1</d:type><d:currency>643</d:currency>
+                    <d:minimumAmount>7000</d:minimumAmount><d:maximumAmount>9999.99</d:maximumAmount>
+                    <d:minimumRate>1</d:minimumRate><d:maximumRate>1</d:maximumRate>
+                    <d:maximumPeriod><d:type>1</d:type><d:value>365</d:value></d:maximumPeriod>
+                    <d:minimumPeriod><d:type>1</d:type><d:value>31</d:value></d:minimumPeriod>
+                </d:rate>
+            </d:penaltyRates>
+            <d:withdrawalAccount><!--ВЫБОР СЧЕТА ДЛЯ ВЫВОДА СРЕДСТВ
+			method: 1 - на счет клиента в том же банке, 5 - на номинальный счет-->
+                <d:method>1</d:method><d:accountFromCustomer>true</d:accountFromCustomer>
+                <!--d:method>5</d:method><d:accountFromCustomer>true</d:accountFromCustomer-->
+            </d:withdrawalAccount>
+        </d:option>
+    </d:options>
+</product>

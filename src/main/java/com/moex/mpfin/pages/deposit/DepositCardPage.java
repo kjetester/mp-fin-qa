@@ -11,7 +11,7 @@ public class DepositCardPage extends AbstractPage {
 
 	private static final String PAGE_UNIQUE_TEXT = "Поздравляем, Вы открыли вклад!";
 
-	private Logger logger = LogManager.getLogger(DepositCardPage.class.getSimpleName());
+	private Logger logger = LogManager.getLogger(this);
 
 	@FindBy(xpath = "//*[@role = 'tablist']")
 	private WebElement tabList;
